@@ -1,35 +1,20 @@
-```html
 <!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>DADA — Pâtisserie & Commandes scolaires</title>
+<title>DADA — Pâté Kreyòl Haïtien</title>
 
 <meta name="description"
-      content="DADA — Pâtés, pâtisseries et commandes pour les écoles en Haïti.">
+content="DADA — Commandez votre Pâté Kreyòl haïtien pour vos écoles, événements et commandes personnelles.">
 
 <style>
 *{
-    box-sizing:border-box;
     margin:0;
     padding:0;
+    box-sizing:border-box;
 }
-
-html{
-    scroll-behavior:smooth;
-}
-
-body{
-    font-family:Arial, Helvetica, sans-serif;
-    background:#fffaf5;
-    color:#292929;
-}
-
-/* =========================
-   VARIABLES
-========================= */
 
 :root{
     --primary:#e85d04;
@@ -43,6 +28,17 @@ body{
     --success:#198754;
 }
 
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:var(--light);
+    color:var(--dark);
+    line-height:1.6;
+}
+
 /* =========================
    HEADER
 ========================= */
@@ -51,18 +47,19 @@ header{
     position:sticky;
     top:0;
     z-index:1000;
-    background:rgba(255,255,255,.97);
+    background:rgba(255,255,255,.96);
+    backdrop-filter:blur(12px);
     border-bottom:1px solid var(--border);
-    box-shadow:0 3px 15px rgba(0,0,0,.06);
 }
 
-.navbar{
-    max-width:1150px;
+.header-container{
+    max-width:1200px;
     margin:auto;
-    padding:15px 20px;
+    padding:16px 25px;
     display:flex;
     align-items:center;
     justify-content:space-between;
+    gap:25px;
 }
 
 .logo{
@@ -70,6 +67,7 @@ header{
     font-weight:900;
     color:var(--primary);
     text-decoration:none;
+    letter-spacing:2px;
 }
 
 .logo span{
@@ -78,14 +76,16 @@ header{
 
 nav{
     display:flex;
-    gap:25px;
+    align-items:center;
+    gap:28px;
 }
 
 nav a{
     text-decoration:none;
     color:var(--dark);
-    font-weight:700;
-    transition:.2s;
+    font-weight:600;
+    font-size:15px;
+    transition:.3s;
 }
 
 nav a:hover{
@@ -93,22 +93,32 @@ nav a:hover{
 }
 
 .cart-button{
-    border:0;
-    background:var(--primary);
+    border:none;
+    background:var(--dark);
     color:white;
-    padding:11px 17px;
-    border-radius:25px;
+    padding:11px 18px;
+    border-radius:8px;
     cursor:pointer;
-    font-weight:bold;
+    font-weight:700;
+    transition:.3s;
 }
 
 .cart-button:hover{
-    background:var(--primary-dark);
+    background:var(--primary);
 }
 
-.menu{
+.cart-count{
+    background:var(--primary);
+    padding:2px 7px;
+    border-radius:20px;
+    margin-left:5px;
+}
+
+.menu-button{
     display:none;
-    font-size:26px;
+    border:none;
+    background:none;
+    font-size:25px;
     cursor:pointer;
 }
 
@@ -117,61 +127,69 @@ nav a:hover{
 ========================= */
 
 .hero{
-    min-height:570px;
+    min-height:650px;
     display:flex;
     align-items:center;
+    position:relative;
+
     background:
-        linear-gradient(rgba(36,23,15,.72),rgba(36,23,15,.72)),
-        url("https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=1600&q=80")
-        center/cover;
-    color:white;
+    linear-gradient(rgba(20,10,5,.62),rgba(20,10,5,.68)),
+    url("https://haitiwonderland.ht/assets/images/upload/blog/haiti_2-pate-kode_1700851249.jpg")
+    center/cover no-repeat;
 }
 
 .hero-content{
-    width:1150px;
-    max-width:92%;
+    max-width:1200px;
+    width:100%;
     margin:auto;
+    padding:80px 25px;
+    color:white;
 }
 
-.badge{
+.hero-badge{
     display:inline-block;
-    background:var(--secondary);
-    color:var(--dark);
-    padding:8px 14px;
-    border-radius:20px;
-    font-weight:bold;
-    margin-bottom:18px;
+    background:rgba(255,186,8,.95);
+    color:#24170f;
+    padding:8px 15px;
+    border-radius:30px;
+    font-size:13px;
+    font-weight:800;
+    margin-bottom:20px;
 }
 
 .hero h1{
-    font-size:clamp(42px,7vw,75px);
-    line-height:1;
-    max-width:750px;
-    margin-bottom:20px;
+    font-size:clamp(42px,7vw,78px);
+    line-height:1.02;
+    max-width:800px;
+    margin-bottom:25px;
+}
+
+.hero h1 span{
+    color:var(--secondary);
 }
 
 .hero p{
     max-width:650px;
-    font-size:20px;
-    line-height:1.6;
-    margin-bottom:30px;
+    font-size:18px;
+    color:#f4f4f4;
+    margin-bottom:35px;
 }
 
 .hero-buttons{
     display:flex;
-    gap:12px;
+    gap:15px;
     flex-wrap:wrap;
 }
 
 .btn{
     display:inline-block;
-    padding:14px 22px;
+    padding:14px 24px;
     border-radius:8px;
     text-decoration:none;
-    font-weight:bold;
+    font-weight:800;
+    transition:.3s;
+    border:none;
     cursor:pointer;
-    border:0;
-    font-size:16px;
 }
 
 .btn-primary{
@@ -181,6 +199,7 @@ nav a:hover{
 
 .btn-primary:hover{
     background:var(--primary-dark);
+    transform:translateY(-2px);
 }
 
 .btn-light{
@@ -188,104 +207,177 @@ nav a:hover{
     color:var(--dark);
 }
 
+.btn-light:hover{
+    transform:translateY(-2px);
+}
+
 /* =========================
-   SECTIONS
+   GENERAL
 ========================= */
 
-section{
-    padding:75px 20px;
-}
-
-.container{
-    max-width:1150px;
+.section{
+    max-width:1200px;
     margin:auto;
+    padding:90px 25px;
 }
 
-.section-title{
+.section-header{
     text-align:center;
-    margin-bottom:45px;
+    margin-bottom:50px;
 }
 
-.section-title h2{
-    font-size:38px;
-    color:var(--dark);
-    margin-bottom:10px;
+.section-header small{
+    color:var(--primary);
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:2px;
 }
 
-.section-title p{
+.section-header h2{
+    font-size:40px;
+    margin-top:10px;
+}
+
+.section-header p{
+    max-width:650px;
+    margin:15px auto 0;
     color:var(--gray);
 }
 
 /* =========================
-   PRODUCTS
+   PRODUCT
 ========================= */
 
-.products{
+.product-wrapper{
     display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:25px;
-}
-
-.product{
-    background:white;
-    border:1px solid var(--border);
-    border-radius:16px;
-    overflow:hidden;
-    box-shadow:0 5px 20px rgba(0,0,0,.05);
-    transition:.25s;
-}
-
-.product:hover{
-    transform:translateY(-5px);
-    box-shadow:0 12px 30px rgba(0,0,0,.1);
+    grid-template-columns:1fr 1fr;
+    gap:45px;
+    align-items:center;
 }
 
 .product-image{
-    height:210px;
-    background-size:cover;
-    background-position:center;
+    min-height:500px;
+    border-radius:20px;
+    background:
+    url("https://haitiwonderland.ht/assets/images/upload/blog/haiti_2-pate-kode_1700851249.jpg")
+    center/cover no-repeat;
+    box-shadow:0 25px 60px rgba(36,23,15,.18);
 }
 
-.product-body{
-    padding:20px;
+.product-info{
+    background:white;
+    padding:40px;
+    border:1px solid var(--border);
+    border-radius:20px;
 }
 
-.product-body h3{
-    color:var(--dark);
-    font-size:22px;
-    margin-bottom:8px;
+.product-label{
+    color:var(--primary);
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:2px;
+    font-size:13px;
 }
 
-.product-body p{
+.product-info h3{
+    font-size:38px;
+    margin:10px 0 15px;
+}
+
+.product-description{
     color:var(--gray);
-    line-height:1.5;
-    margin-bottom:15px;
+    margin-bottom:30px;
 }
 
-.product-bottom{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:10px;
+.price-title{
+    font-size:14px;
+    font-weight:800;
+    margin-bottom:12px;
 }
 
-.price{
-    font-size:21px;
-    font-weight:900;
+.price-options{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+    margin-bottom:25px;
+}
+
+.price-option{
+    border:2px solid var(--border);
+    background:white;
+    padding:18px 10px;
+    border-radius:12px;
+    cursor:pointer;
+    font-weight:800;
+    transition:.3s;
+}
+
+.price-option:hover,
+.price-option.active{
+    border-color:var(--primary);
+    background:#fff4ec;
     color:var(--primary);
 }
 
-.add{
-    border:0;
-    background:var(--dark);
-    color:white;
-    padding:10px 14px;
-    border-radius:7px;
-    cursor:pointer;
-    font-weight:bold;
+.price-option strong{
+    display:block;
+    font-size:20px;
 }
 
-.add:hover{
+.price-option span{
+    font-size:12px;
+    color:var(--gray);
+    font-weight:500;
+}
+
+.quantity-area{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
+    margin-bottom:20px;
+}
+
+.quantity-control{
+    display:flex;
+    align-items:center;
+    border:1px solid var(--border);
+    border-radius:8px;
+    overflow:hidden;
+}
+
+.quantity-control button{
+    width:42px;
+    height:42px;
+    border:none;
+    background:#f7f2ee;
+    cursor:pointer;
+    font-size:20px;
+}
+
+.quantity-control input{
+    width:50px;
+    height:42px;
+    border:none;
+    text-align:center;
+    font-size:16px;
+    font-weight:700;
+}
+
+.add-cart{
+    width:100%;
+    background:var(--dark);
+    color:white;
+    border:none;
+    padding:16px;
+    border-radius:9px;
+    cursor:pointer;
+    font-weight:800;
+    font-size:15px;
+    transition:.3s;
+}
+
+.add-cart:hover{
     background:var(--primary);
 }
 
@@ -293,33 +385,30 @@ section{
    SCHOOL ORDER
 ========================= */
 
-.school-section{
-    background:#fff0e5;
-}
-
-.school-box{
+.order-section{
     background:white;
-    max-width:850px;
-    margin:auto;
-    padding:35px;
+    border-top:1px solid var(--border);
+    border-bottom:1px solid var(--border);
+}
+
+.order-layout{
+    display:grid;
+    grid-template-columns:1.2fr .8fr;
+    gap:35px;
+}
+
+.form-card,
+.summary-card{
+    background:var(--light);
+    border:1px solid var(--border);
     border-radius:18px;
-    box-shadow:0 8px 30px rgba(0,0,0,.07);
+    padding:30px;
 }
 
-.school-intro{
-    text-align:center;
-    margin-bottom:30px;
-}
-
-.school-intro h2{
-    font-size:35px;
-    color:var(--dark);
-    margin-bottom:10px;
-}
-
-.school-intro p{
-    color:var(--gray);
-    line-height:1.6;
+.form-card h3,
+.summary-card h3{
+    margin-bottom:25px;
+    font-size:25px;
 }
 
 .form-grid{
@@ -331,84 +420,84 @@ section{
 .form-group{
     display:flex;
     flex-direction:column;
+    gap:7px;
 }
 
 .form-group.full{
     grid-column:1/-1;
 }
 
-label{
-    font-weight:bold;
-    margin-bottom:7px;
-    color:var(--dark);
+.form-group label{
+    font-size:13px;
+    font-weight:800;
 }
 
-input,
-select,
-textarea{
+.form-group input,
+.form-group select,
+.form-group textarea{
     width:100%;
-    border:1px solid #d9ccc2;
+    padding:13px 14px;
+    border:1px solid var(--border);
     border-radius:8px;
-    padding:13px;
-    font-size:15px;
-    outline:none;
     background:white;
+    outline:none;
+    font-family:inherit;
+    font-size:14px;
 }
 
-input:focus,
-select:focus,
-textarea:focus{
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus{
     border-color:var(--primary);
-    box-shadow:0 0 0 3px rgba(232,93,4,.1);
 }
 
-textarea{
+.form-group textarea{
     min-height:100px;
     resize:vertical;
 }
 
-.order-summary{
-    margin-top:25px;
-    background:#fff8f2;
-    border:1px solid var(--border);
-    padding:18px;
-    border-radius:10px;
-}
-
-.order-summary h3{
-    margin-bottom:10px;
-}
-
-.summary-empty{
-    color:var(--gray);
+.summary-items{
+    margin-bottom:20px;
 }
 
 .summary-item{
     display:flex;
     justify-content:space-between;
-    padding:8px 0;
-    border-bottom:1px solid #eadfd6;
+    gap:15px;
+    padding:13px 0;
+    border-bottom:1px solid var(--border);
+    font-size:14px;
 }
 
-.total{
+.summary-empty{
+    color:var(--gray);
+    text-align:center;
+    padding:25px 0;
+}
+
+.summary-total{
     display:flex;
     justify-content:space-between;
-    margin-top:15px;
+    padding-top:20px;
     font-size:20px;
     font-weight:900;
 }
 
+.total-value{
+    color:var(--primary);
+}
+
 .submit-order{
     width:100%;
-    margin-top:20px;
+    margin-top:25px;
+    padding:16px;
+    border:none;
     background:var(--primary);
     color:white;
-    border:0;
-    padding:15px;
     border-radius:9px;
-    font-size:17px;
-    font-weight:bold;
     cursor:pointer;
+    font-weight:900;
+    transition:.3s;
 }
 
 .submit-order:hover{
@@ -426,32 +515,49 @@ textarea{
 }
 
 .step{
-    text-align:center;
-    padding:25px;
+    background:white;
+    padding:35px 25px;
+    border:1px solid var(--border);
+    border-radius:16px;
 }
 
 .step-number{
-    width:65px;
-    height:65px;
+    width:45px;
+    height:45px;
     display:flex;
     align-items:center;
     justify-content:center;
-    margin:0 auto 18px;
-    border-radius:50%;
     background:var(--primary);
     color:white;
-    font-size:25px;
+    border-radius:50%;
     font-weight:900;
+    margin-bottom:20px;
 }
 
 .step h3{
     margin-bottom:10px;
-    color:var(--dark);
 }
 
 .step p{
     color:var(--gray);
-    line-height:1.5;
+}
+
+/* =========================
+   NOTICE
+========================= */
+
+.notice{
+    margin-top:25px;
+    padding:15px;
+    border-radius:9px;
+    background:#edf8f1;
+    color:#176b3c;
+    font-size:13px;
+    display:none;
+}
+
+.notice.show{
+    display:block;
 }
 
 /* =========================
@@ -461,7 +567,7 @@ textarea{
 .modal{
     position:fixed;
     inset:0;
-    background:rgba(0,0,0,.55);
+    background:rgba(0,0,0,.65);
     z-index:2000;
     display:none;
     align-items:center;
@@ -469,96 +575,76 @@ textarea{
     padding:20px;
 }
 
-.modal.active{
+.modal.show{
     display:flex;
 }
 
 .modal-box{
     background:white;
     width:100%;
-    max-width:550px;
+    max-width:600px;
     max-height:90vh;
     overflow:auto;
-    border-radius:16px;
-    padding:25px;
+    border-radius:18px;
+    padding:30px;
 }
 
 .modal-header{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    margin-bottom:20px;
+    margin-bottom:25px;
 }
 
-.modal-header h2{
-    color:var(--dark);
-}
-
-.close{
-    background:none;
-    border:0;
-    font-size:28px;
+.close-modal{
+    border:none;
+    background:#f2eee9;
+    width:38px;
+    height:38px;
+    border-radius:50%;
     cursor:pointer;
+    font-size:20px;
 }
 
 .cart-item{
     display:flex;
-    justify-content:space-between;
     align-items:center;
-    gap:10px;
+    justify-content:space-between;
+    gap:15px;
+    padding:15px 0;
     border-bottom:1px solid var(--border);
-    padding:12px 0;
 }
 
 .cart-item-info strong{
     display:block;
 }
 
-.cart-item-info small{
+.cart-item-info span{
+    font-size:13px;
     color:var(--gray);
 }
 
-.qty{
+.cart-actions{
     display:flex;
     align-items:center;
-    gap:8px;
+    gap:7px;
 }
 
-.qty button{
-    width:28px;
-    height:28px;
-    border:0;
+.cart-actions button{
+    border:1px solid var(--border);
+    background:white;
+    width:30px;
+    height:30px;
     border-radius:5px;
     cursor:pointer;
-    background:#eee;
-}
-
-.remove{
-    color:#d00000;
-    background:none;
-    border:0;
-    cursor:pointer;
-    font-size:18px;
 }
 
 .cart-total{
     display:flex;
     justify-content:space-between;
-    margin-top:20px;
-    font-size:22px;
+    font-size:20px;
     font-weight:900;
-}
-
-.go-order{
-    width:100%;
-    margin-top:20px;
-    padding:14px;
-    border:0;
-    border-radius:8px;
-    background:var(--primary);
-    color:white;
-    font-weight:bold;
-    cursor:pointer;
+    margin-top:25px;
 }
 
 /* =========================
@@ -568,92 +654,134 @@ textarea{
 footer{
     background:var(--dark);
     color:white;
-    padding:45px 20px;
+    padding:55px 25px 25px;
 }
 
-.footer-content{
-    max-width:1150px;
+.footer-container{
+    max-width:1200px;
     margin:auto;
-    display:flex;
-    justify-content:space-between;
-    gap:30px;
-    flex-wrap:wrap;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
 }
 
-.footer-brand h2{
+.footer-logo{
+    font-size:30px;
+    font-weight:900;
     color:var(--secondary);
-    margin-bottom:10px;
 }
 
-.footer-brand p{
-    color:#ddd;
-    max-width:450px;
-    line-height:1.6;
+.footer-text{
+    color:#cfc8c2;
+    max-width:500px;
+    margin-top:15px;
+}
+
+.footer-contact{
+    text-align:right;
+}
+
+.footer-contact h3{
+    margin-bottom:15px;
+}
+
+.footer-contact p{
+    color:#cfc8c2;
 }
 
 .copyright{
-    margin-top:30px;
+    max-width:1200px;
+    margin:40px auto 0;
     padding-top:20px;
-    border-top:1px solid rgba(255,255,255,.15);
-    text-align:center;
-    color:#bbb;
+    border-top:1px solid rgba(255,255,255,.12);
+    color:#aaa;
+    font-size:13px;
 }
 
 /* =========================
-   SUCCESS
+   RESPONSIVE
 ========================= */
 
-.success{
-    display:none;
-    background:#e9f8ef;
-    border:1px solid #a8dfba;
-    color:#146c35;
-    padding:15px;
-    border-radius:8px;
-    margin-top:20px;
-    line-height:1.5;
-}
-
-.success.show{
-    display:block;
-}
-
-/* =========================
-   MOBILE
-========================= */
-
-@media(max-width:800px){
+@media(max-width:850px){
 
     nav{
-        display:none;
         position:absolute;
-        top:70px;
+        top:72px;
         left:0;
         right:0;
         background:white;
+        display:none;
         flex-direction:column;
-        padding:20px;
+        align-items:flex-start;
+        padding:25px;
         border-bottom:1px solid var(--border);
     }
 
-    nav.open{
+    nav.show{
         display:flex;
     }
 
-    .menu{
+    .menu-button{
         display:block;
     }
 
-    .cart-button{
-        margin-left:auto;
-        margin-right:12px;
+    .header-container{
+        padding:15px 18px;
     }
 
-    .products{
+    .product-wrapper,
+    .order-layout{
         grid-template-columns:1fr;
     }
 
+    .product-image{
+        min-height:350px;
+    }
+
     .steps{
+        grid-template-columns:1fr;
+    }
+
+    .footer-container{
+        grid-template-columns:1fr;
+    }
+
+    .footer-contact{
+        text-align:left;
+    }
+}
+
+@media(max-width:600px){
+
+    .hero{
+        min-height:600px;
+    }
+
+    .hero-content{
+        padding:60px 20px;
+    }
+
+    .hero h1{
+        font-size:45px;
+    }
+
+    .section{
+        padding:65px 18px;
+    }
+
+    .section-header h2{
+        font-size:32px;
+    }
+
+    .product-info{
+        padding:25px;
+    }
+
+    .product-info h3{
+        font-size:30px;
+    }
+
+    .price-options{
         grid-template-columns:1fr;
     }
 
@@ -665,20 +793,9 @@ footer{
         grid-column:auto;
     }
 
-    .school-box{
+    .form-card,
+    .summary-card{
         padding:22px;
-    }
-
-    section{
-        padding:55px 15px;
-    }
-
-    .hero{
-        min-height:600px;
-    }
-
-    .hero p{
-        font-size:17px;
     }
 }
 </style>
@@ -691,28 +808,31 @@ footer{
 ========================= -->
 
 <header>
+    <div class="header-container">
 
-<div class="navbar">
+        <a href="#" class="logo">
+            DADA<span>.</span>
+        </a>
 
-<a href="#accueil" class="logo">
-DADA<span>.</span>
-</a>
+        <nav id="navigation">
+            <a href="#accueil">Accueil</a>
+            <a href="#produit">Pâté Kreyòl</a>
+            <a href="#commande">Commander</a>
+            <a href="#fonctionnement">Comment ça marche</a>
+        </nav>
 
-<nav id="nav">
-<a href="#accueil">Accueil</a>
-<a href="#produits">Produits</a>
-<a href="#commande">Commande école</a>
-<a href="#fonctionnement">Comment ça marche</a>
-</nav>
+        <div style="display:flex;align-items:center;gap:10px;">
+            <button class="cart-button" onclick="openCart()">
+                Panier
+                <span class="cart-count" id="cartCount">0</span>
+            </button>
 
-<button class="cart-button" onclick="openCart()">
-🛒 Panier (<span id="cartCount">0</span>)
-</button>
+            <button class="menu-button" onclick="toggleMenu()">
+                ☰
+            </button>
+        </div>
 
-<div class="menu" onclick="toggleMenu()">☰</div>
-
-</div>
-
+    </div>
 </header>
 
 
@@ -722,364 +842,373 @@ DADA<span>.</span>
 
 <section class="hero" id="accueil">
 
-<div class="hero-content">
+    <div class="hero-content">
 
-<span class="badge">🥟 Pâtés & gourmandises</span>
+        <span class="hero-badge">
+            PÂTÉ KREYÒL HAÏTIEN
+        </span>
 
-<h1>
-Les saveurs de DADA,
-directement à votre école.
-</h1>
+        <h1>
+            Le goût authentique du
+            <span>Pâté Kreyòl.</span>
+        </h1>
 
-<p>
-Commandez facilement vos pâtés et autres produits
-DADA pour une livraison à l'école, à l'heure qui vous convient.
-</p>
+        <p>
+            DADA vous propose son Pâté Kreyòl haïtien pour vos
+            commandes personnelles, scolaires et événements.
+            Choisissez votre option et passez votre commande simplement.
+        </p>
 
-<div class="hero-buttons">
+        <div class="hero-buttons">
 
-<a href="#produits" class="btn btn-primary">
-Voir les produits
-</a>
+            <a href="#produit" class="btn btn-primary">
+                Voir les options
+            </a>
 
-<a href="#commande" class="btn btn-light">
-🏫 Commander pour une école
-</a>
+            <a href="#commande" class="btn btn-light">
+                Commander
+            </a>
 
-</div>
+        </div>
 
-</div>
-
-</section>
-
-
-<!-- =========================
-     PRODUCTS
-========================= -->
-
-<section id="produits">
-
-<div class="container">
-
-<div class="section-title">
-
-<h2>Nos produits</h2>
-
-<p>
-Choisissez vos produits et ajoutez-les au panier.
-</p>
-
-</div>
-
-
-<div class="products">
-
-<!-- PRODUCT 1 -->
-
-<div class="product">
-
-<div class="product-image"
-style="background-image:url('https://images.unsplash.com/photo-1601050690117-94f5f6fa8bd7?auto=format&fit=crop&w=800&q=80');">
-</div>
-
-<div class="product-body">
-
-<h3>Pâté classique</h3>
-
-<p>
-Un délicieux pâté préparé avec soin.
-</p>
-
-<div class="product-bottom">
-
-<span class="price">100 HTG</span>
-
-<button class="add"
-onclick="addToCart('Pâté classique',100)">
-Ajouter
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-
-<!-- PRODUCT 2 -->
-
-<div class="product">
-
-<div class="product-image"
-style="background-image:url('https://images.unsplash.com/photo-1626196343793-7d3d0f4b7f4f?auto=format&fit=crop&w=800&q=80');">
-</div>
-
-<div class="product-body">
-
-<h3>Pâté au poulet</h3>
-
-<p>
-Une garniture savoureuse pour une pause gourmande.
-</p>
-
-<div class="product-bottom">
-
-<span class="price">150 HTG</span>
-
-<button class="add"
-onclick="addToCart('Pâté au poulet',150)">
-Ajouter
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-
-<!-- PRODUCT 3 -->
-
-<div class="product">
-
-<div class="product-image"
-style="background-image:url('https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=800&q=80');">
-</div>
-
-<div class="product-body">
-
-<h3>Gâteau</h3>
-
-<p>
-Une douceur idéale pour les événements scolaires.
-</p>
-
-<div class="product-bottom">
-
-<span class="price">500 HTG</span>
-
-<button class="add"
-onclick="addToCart('Gâteau',500)">
-Ajouter
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
+    </div>
 
 </section>
 
 
 <!-- =========================
-     SCHOOL ORDER
+     PRODUCT
 ========================= -->
 
-<section class="school-section" id="commande">
+<section class="section" id="produit">
 
-<div class="container">
+    <div class="section-header">
 
-<div class="school-box">
+        <small>Notre spécialité</small>
 
-<div class="school-intro">
+        <h2>Pâté Kreyòl Haïtien</h2>
 
-<h2>🏫 Commande pour une école</h2>
+        <p>
+            Une seule spécialité, préparée autour du véritable
+            goût du Pâté Kreyòl haïtien.
+        </p>
 
-<p>
-Remplissez le formulaire ci-dessous pour organiser
-la livraison de votre commande directement à votre école.
-</p>
+    </div>
 
-</div>
 
+    <div class="product-wrapper">
 
-<form id="schoolForm">
+        <div class="product-image"></div>
 
-<div class="form-grid">
 
-<div class="form-group">
+        <div class="product-info">
 
-<label for="name">
-Nom complet *
-</label>
+            <span class="product-label">
+                DADA — PÂTÉ KREYÒL
+            </span>
 
-<input
-type="text"
-id="name"
-placeholder="Ex : Jean Pierre"
-required
->
+            <h3>
+                Pâté Kreyòl Haïtien
+            </h3>
 
-</div>
+            <p class="product-description">
+                Choisissez simplement l'option de prix qui correspond
+                à votre commande. Les trois options concernent le même
+                Pâté Kreyòl.
+            </p>
 
 
-<div class="form-group">
+            <div class="price-title">
+                Choisissez votre option
+            </div>
 
-<label for="phone">
-Numéro de téléphone *
-</label>
+            <div class="price-options">
 
-<input
-type="tel"
-id="phone"
-placeholder="Ex : 37 00 00 00"
-required
->
+                <button
+                    class="price-option active"
+                    onclick="selectPrice(50,this)"
+                >
+                    <strong>50 HTG</strong>
+                    <span>Option 50</span>
+                </button>
 
-</div>
+                <button
+                    class="price-option"
+                    onclick="selectPrice(100,this)"
+                >
+                    <strong>100 HTG</strong>
+                    <span>Option 100</span>
+                </button>
 
+                <button
+                    class="price-option"
+                    onclick="selectPrice(150,this)"
+                >
+                    <strong>150 HTG</strong>
+                    <span>Option 150</span>
+                </button>
 
-<div class="form-group full">
+            </div>
 
-<label for="school">
-Nom de l'école *
-</label>
 
-<input
-type="text"
-id="school"
-placeholder="Ex : Collège ..."
-required
->
+            <div class="quantity-area">
 
-</div>
+                <strong>Quantité</strong>
 
+                <div class="quantity-control">
 
-<div class="form-group">
+                    <button onclick="changeQuantity(-1)">
+                        −
+                    </button>
 
-<label for="date">
-Date de livraison *
-</label>
+                    <input
+                        type="number"
+                        id="productQuantity"
+                        value="1"
+                        min="1"
+                        readonly
+                    >
 
-<input
-type="date"
-id="date"
-required
->
+                    <button onclick="changeQuantity(1)">
+                        +
+                    </button>
 
-</div>
+                </div>
 
+            </div>
 
-<div class="form-group">
 
-<label for="time">
-Heure souhaitée *
-</label>
+            <button class="add-cart" onclick="addSelectedProduct()">
+                Ajouter au panier
+            </button>
 
-<input
-type="time"
-id="time"
-required
->
+        </div>
 
-</div>
+    </div>
 
+</section>
 
-<div class="form-group">
 
-<label for="class">
-Classe / niveau
-</label>
+<!-- =========================
+     ORDER
+========================= -->
 
-<input
-type="text"
-id="class"
-placeholder="Ex : NS4"
->
+<section class="order-section" id="commande">
 
-</div>
+    <div class="section">
 
+        <div class="section-header">
 
-<div class="form-group">
+            <small>Commande scolaire</small>
 
-<label for="location">
-Lieu dans l'école
-</label>
+            <h2>Commander pour votre école</h2>
 
-<select id="location">
+            <p>
+                Remplissez les informations ci-dessous afin de
+                préparer votre commande.
+            </p>
 
-<option value="">Choisir</option>
-<option>Portail de l'école</option>
-<option>Salle de classe</option>
-<option>Administration</option>
-<option>Cour de l'école</option>
-<option>Autre</option>
+        </div>
 
-</select>
 
-</div>
+        <div class="order-layout">
 
 
-<div class="form-group full">
+            <!-- FORM -->
 
-<label for="note">
-Remarque
-</label>
+            <div class="form-card">
 
-<textarea
-id="note"
-placeholder="Une précision concernant votre commande..."
-></textarea>
+                <h3>
+                    Informations de commande
+                </h3>
 
-</div>
+                <form id="orderForm">
 
-</div>
+                    <div class="form-grid">
 
+                        <div class="form-group">
 
-<!-- ORDER SUMMARY -->
+                            <label for="name">
+                                Nom complet
+                            </label>
 
-<div class="order-summary">
+                            <input
+                                type="text"
+                                id="name"
+                                required
+                                placeholder="Votre nom"
+                            >
 
-<h3>🛒 Votre commande</h3>
+                        </div>
 
-<div id="formSummary">
 
-<p class="summary-empty">
-Aucun produit sélectionné.
-</p>
+                        <div class="form-group">
 
-</div>
+                            <label for="phone">
+                                Numéro de téléphone
+                            </label>
 
-<div class="total">
+                            <input
+                                type="tel"
+                                id="phone"
+                                required
+                                placeholder="Ex. 509 0000 0000"
+                            >
 
-<span>Total</span>
+                        </div>
 
-<span id="formTotal">
-0 HTG
-</span>
 
-</div>
+                        <div class="form-group full">
 
-</div>
+                            <label for="school">
+                                Nom de l'école
+                            </label>
 
+                            <input
+                                type="text"
+                                id="school"
+                                required
+                                placeholder="Nom de votre école"
+                            >
 
-<button
-type="submit"
-class="submit-order"
->
-✅ Confirmer la commande
-</button>
+                        </div>
 
 
-<div
-class="success"
-id="successMessage"
->
-<strong>Commande enregistrée !</strong><br>
-Votre demande de commande a été préparée.
-Le marchand pourra confirmer la livraison.
-</div>
+                        <div class="form-group">
 
-</form>
+                            <label for="date">
+                                Date de livraison
+                            </label>
 
-</div>
+                            <input
+                                type="date"
+                                id="date"
+                                required
+                            >
 
-</div>
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="time">
+                                Heure souhaitée
+                            </label>
+
+                            <input
+                                type="time"
+                                id="time"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="class">
+                                Classe / Niveau
+                            </label>
+
+                            <input
+                                type="text"
+                                id="class"
+                                placeholder="Ex. NS4"
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="location">
+                                Lieu dans l'école
+                            </label>
+
+                            <input
+                                type="text"
+                                id="location"
+                                placeholder="Ex. Entrée principale"
+                            >
+
+                        </div>
+
+
+                        <div class="form-group full">
+
+                            <label for="note">
+                                Note supplémentaire
+                            </label>
+
+                            <textarea
+                                id="note"
+                                placeholder="Précision concernant la commande..."
+                            ></textarea>
+
+                        </div>
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="submit-order"
+                    >
+                        Préparer la commande sur WhatsApp
+                    </button>
+
+
+                    <div
+                        class="notice"
+                        id="successNotice"
+                    >
+                        Votre commande est prête. WhatsApp va s'ouvrir
+                        avec les informations de votre commande.
+                        Vérifiez le message puis appuyez sur Envoyer.
+                    </div>
+
+                </form>
+
+            </div>
+
+
+            <!-- SUMMARY -->
+
+            <div class="summary-card">
+
+                <h3>
+                    Résumé de la commande
+                </h3>
+
+                <div
+                    class="summary-items"
+                    id="summaryItems"
+                >
+                    <div class="summary-empty">
+                        Aucun produit ajouté.
+                    </div>
+                </div>
+
+                <div class="summary-total">
+
+                    <span>
+                        Total
+                    </span>
+
+                    <span
+                        class="total-value"
+                        id="summaryTotal"
+                    >
+                        0 HTG
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
 
 </section>
 
@@ -1088,67 +1217,77 @@ Le marchand pourra confirmer la livraison.
      HOW IT WORKS
 ========================= -->
 
-<section id="fonctionnement">
+<section class="section" id="fonctionnement">
 
-<div class="container">
+    <div class="section-header">
 
-<div class="section-title">
+        <small>Simple et rapide</small>
 
-<h2>Comment ça marche ?</h2>
+        <h2>Comment ça marche ?</h2>
 
-<p>
-Commander pour votre école est simple.
-</p>
+        <p>
+            Passez votre commande en quelques étapes.
+        </p>
 
-</div>
-
-
-<div class="steps">
-
-<div class="step">
-
-<div class="step-number">1</div>
-
-<h3>Choisissez</h3>
-
-<p>
-Sélectionnez les produits DADA
-que vous souhaitez commander.
-</p>
-
-</div>
+    </div>
 
 
-<div class="step">
+    <div class="steps">
 
-<div class="step-number">2</div>
+        <div class="step">
 
-<h3>Indiquez votre école</h3>
+            <div class="step-number">
+                1
+            </div>
 
-<p>
-Donnez votre nom, votre école,
-votre téléphone, la date et l'heure.
-</p>
+            <h3>
+                Choisissez
+            </h3>
 
-</div>
+            <p>
+                Sélectionnez votre option de Pâté Kreyòl :
+                50, 100 ou 150 HTG.
+            </p>
+
+        </div>
 
 
-<div class="step">
+        <div class="step">
 
-<div class="step-number">3</div>
+            <div class="step-number">
+                2
+            </div>
 
-<h3>Recevez votre commande</h3>
+            <h3>
+                Remplissez le formulaire
+            </h3>
 
-<p>
-DADA prépare votre commande
-pour la livraison à l'école.
-</p>
+            <p>
+                Indiquez votre nom, votre téléphone, votre école,
+                la date et l'heure souhaitées.
+            </p>
 
-</div>
+        </div>
 
-</div>
 
-</div>
+        <div class="step">
+
+            <div class="step-number">
+                3
+            </div>
+
+            <h3>
+                Confirmez sur WhatsApp
+            </h3>
+
+            <p>
+                Votre commande est préparée automatiquement
+                dans WhatsApp pour être envoyée à DADA.
+            </p>
+
+        </div>
+
+    </div>
 
 </section>
 
@@ -1159,51 +1298,46 @@ pour la livraison à l'école.
 
 <footer>
 
-<div class="footer-content">
+    <div class="footer-container">
 
-<div class="footer-brand">
+        <div>
 
-<h2>DADA.</h2>
+            <div class="footer-logo">
+                DADA.
+            </div>
 
-<p>
-Pâtés et gourmandises préparés avec soin,
-avec un service de commande pratique
-pour les écoles.
-</p>
+            <p class="footer-text">
+                Pâté Kreyòl haïtien préparé pour vos commandes
+                personnelles, scolaires et événements.
+            </p>
 
-</div>
+        </div>
 
-<div>
 
-<strong>Navigation</strong>
+        <div class="footer-contact">
 
-<br><br>
+            <h3>
+                Commandes
+            </h3>
 
-<a href="#accueil" style="color:#ddd;text-decoration:none;">
-Accueil
-</a>
+            <p>
+                WhatsApp : +509 5519-4318
+            </p>
 
-<br><br>
+            <p>
+                Pâté Kreyòl — 50 / 100 / 150 HTG
+            </p>
 
-<a href="#produits" style="color:#ddd;text-decoration:none;">
-Produits
-</a>
+        </div>
 
-<br><br>
+    </div>
 
-<a href="#commande" style="color:#ddd;text-decoration:none;">
-Commande école
-</a>
 
-</div>
+    <div class="copyright">
 
-</div>
+        © 2026 DADA. Tous droits réservés.
 
-<div class="copyright">
-
-© 2026 DADA — Tous droits réservés.
-
-</div>
+    </div>
 
 </footer>
 
@@ -1214,41 +1348,57 @@ Commande école
 
 <div class="modal" id="cartModal">
 
-<div class="modal-box">
+    <div class="modal-box">
 
-<div class="modal-header">
+        <div class="modal-header">
 
-<h2>🛒 Votre panier</h2>
+            <h2>
+                Votre panier
+            </h2>
 
-<button class="close" onclick="closeCart()">
-×
-</button>
+            <button
+                class="close-modal"
+                onclick="closeCart()"
+            >
+                ×
+            </button>
 
-</div>
-
-
-<div id="cartItems"></div>
-
-
-<div class="cart-total">
-
-<span>Total</span>
-
-<span id="cartTotal">
-0 HTG
-</span>
-
-</div>
+        </div>
 
 
-<button
-class="go-order"
-onclick="goToOrder()"
->
-🏫 Continuer vers la commande école
-</button>
+        <div id="cartItems">
 
-</div>
+            <div class="summary-empty">
+                Votre panier est vide.
+            </div>
+
+        </div>
+
+
+        <div class="cart-total">
+
+            <span>
+                Total
+            </span>
+
+            <span
+                class="total-value"
+                id="cartTotal"
+            >
+                0 HTG
+            </span>
+
+        </div>
+
+
+        <button
+            class="submit-order"
+            onclick="goToOrder()"
+        >
+            Passer la commande
+        </button>
+
+    </div>
 
 </div>
 
@@ -1256,155 +1406,259 @@ onclick="goToOrder()"
 <script>
 
 /* =========================
-   DATA
+   CONFIGURATION
 ========================= */
+
+const WHATSAPP_NUMBER = "50955194318";
+
+
+/* =========================
+   VARIABLES
+========================= */
+
+let selectedPrice = 50;
+
+let productQuantity = 1;
 
 let cart = [];
 
 
 /* =========================
-   ADD TO CART
+   MENU MOBILE
 ========================= */
 
-function addToCart(name, price){
+function toggleMenu(){
 
-    const existing = cart.find(item => item.name === name);
+    const navigation =
+        document.getElementById("navigation");
+
+    navigation.classList.toggle("show");
+
+}
+
+
+/* =========================
+   PRIX
+========================= */
+
+function selectPrice(price, button){
+
+    selectedPrice = price;
+
+    document
+        .querySelectorAll(".price-option")
+        .forEach(function(item){
+
+            item.classList.remove("active");
+
+        });
+
+    button.classList.add("active");
+
+}
+
+
+/* =========================
+   QUANTITÉ
+========================= */
+
+function changeQuantity(amount){
+
+    productQuantity += amount;
+
+    if(productQuantity < 1){
+        productQuantity = 1;
+    }
+
+    document.getElementById("productQuantity").value =
+        productQuantity;
+
+}
+
+
+/* =========================
+   AJOUT PANIER
+========================= */
+
+function addSelectedProduct(){
+
+    const productName =
+        "Pâté Kreyòl — " + selectedPrice + " HTG";
+
+    const existing =
+        cart.find(function(item){
+
+            return item.price === selectedPrice;
+
+        });
+
 
     if(existing){
 
-        existing.quantity++;
+        existing.quantity += productQuantity;
 
     }else{
 
         cart.push({
-            name:name,
-            price:price,
-            quantity:1
+            name:productName,
+            price:selectedPrice,
+            quantity:productQuantity
         });
 
     }
 
+
+    productQuantity = 1;
+
+    document.getElementById("productQuantity").value = 1;
+
     updateCart();
+
+    openCart();
 
 }
 
 
 /* =========================
-   UPDATE CART
+   PANIER
 ========================= */
 
 function updateCart(){
 
-    const count = cart.reduce(
-        (total,item)=>total + item.quantity,
-        0
-    );
+    const cartCount =
+        document.getElementById("cartCount");
 
-    document.getElementById("cartCount").textContent = count;
-
-    renderCart();
-
-    renderFormSummary();
-
-}
-
-
-/* =========================
-   RENDER CART
-========================= */
-
-function renderCart(){
-
-    const container =
+    const cartItems =
         document.getElementById("cartItems");
 
-    const totalElement =
-        document.getElementById("cartTotal");
+    const summaryItems =
+        document.getElementById("summaryItems");
 
-    if(cart.length === 0){
-
-        container.innerHTML =
-            `<p style="color:#777;">
-                Votre panier est vide.
-            </p>`;
-
-        totalElement.textContent = "0 HTG";
-
-        return;
-
-    }
+    let totalQuantity = 0;
 
     let total = 0;
 
-    container.innerHTML = "";
 
-    cart.forEach((item,index)=>{
+    cart.forEach(function(item){
 
-        const itemTotal =
-            item.price * item.quantity;
+        totalQuantity += item.quantity;
 
-        total += itemTotal;
-
-        container.innerHTML += `
-
-        <div class="cart-item">
-
-            <div class="cart-item-info">
-
-                <strong>${item.name}</strong>
-
-                <small>
-                    ${item.price} HTG × ${item.quantity}
-                </small>
-
-            </div>
-
-            <div class="qty">
-
-                <button
-                    onclick="changeQuantity(${index},-1)"
-                >
-                    −
-                </button>
-
-                <strong>
-                    ${item.quantity}
-                </strong>
-
-                <button
-                    onclick="changeQuantity(${index},1)"
-                >
-                    +
-                </button>
-
-                <button
-                    class="remove"
-                    onclick="removeItem(${index})"
-                >
-                    ×
-                </button>
-
-            </div>
-
-        </div>
-
-        `;
+        total += item.price * item.quantity;
 
     });
 
-    totalElement.textContent =
-        total.toLocaleString() + " HTG";
+
+    cartCount.textContent = totalQuantity;
+
+
+    /* CART MODAL */
+
+    if(cart.length === 0){
+
+        cartItems.innerHTML = `
+            <div class="summary-empty">
+                Votre panier est vide.
+            </div>
+        `;
+
+    }else{
+
+        cartItems.innerHTML = cart.map(function(item,index){
+
+            return `
+                <div class="cart-item">
+
+                    <div class="cart-item-info">
+
+                        <strong>
+                            ${item.name}
+                        </strong>
+
+                        <span>
+                            ${item.price} HTG × ${item.quantity}
+                        </span>
+
+                    </div>
+
+                    <div class="cart-actions">
+
+                        <button onclick="changeCartQuantity(${index},-1)">
+                            −
+                        </button>
+
+                        <strong>
+                            ${item.quantity}
+                        </strong>
+
+                        <button onclick="changeCartQuantity(${index},1)">
+                            +
+                        </button>
+
+                        <button onclick="removeCartItem(${index})">
+                            ×
+                        </button>
+
+                    </div>
+
+                </div>
+            `;
+
+        }).join("");
+
+    }
+
+
+    /* SUMMARY */
+
+    if(cart.length === 0){
+
+        summaryItems.innerHTML = `
+            <div class="summary-empty">
+                Aucun produit ajouté.
+            </div>
+        `;
+
+    }else{
+
+        summaryItems.innerHTML = cart.map(function(item){
+
+            return `
+                <div class="summary-item">
+
+                    <span>
+                        ${item.name}
+                        × ${item.quantity}
+                    </span>
+
+                    <strong>
+                        ${item.price * item.quantity} HTG
+                    </strong>
+
+                </div>
+            `;
+
+        }).join("");
+
+    }
+
+
+    document.getElementById("cartTotal").textContent =
+        total + " HTG";
+
+    document.getElementById("summaryTotal").textContent =
+        total + " HTG";
 
 }
 
 
 /* =========================
-   CHANGE QUANTITY
+   MODIFIER PANIER
 ========================= */
 
-function changeQuantity(index, amount){
+function changeCartQuantity(index, amount){
 
     cart[index].quantity += amount;
+
 
     if(cart[index].quantity <= 0){
 
@@ -1412,16 +1666,17 @@ function changeQuantity(index, amount){
 
     }
 
+
     updateCart();
 
 }
 
 
 /* =========================
-   REMOVE
+   SUPPRIMER
 ========================= */
 
-function removeItem(index){
+function removeCartItem(index){
 
     cart.splice(index,1);
 
@@ -1431,88 +1686,29 @@ function removeItem(index){
 
 
 /* =========================
-   FORM SUMMARY
-========================= */
-
-function renderFormSummary(){
-
-    const summary =
-        document.getElementById("formSummary");
-
-    const totalElement =
-        document.getElementById("formTotal");
-
-    if(cart.length === 0){
-
-        summary.innerHTML =
-            `<p class="summary-empty">
-                Aucun produit sélectionné.
-            </p>`;
-
-        totalElement.textContent = "0 HTG";
-
-        return;
-
-    }
-
-    let total = 0;
-
-    summary.innerHTML = "";
-
-    cart.forEach(item=>{
-
-        const itemTotal =
-            item.price * item.quantity;
-
-        total += itemTotal;
-
-        summary.innerHTML += `
-
-        <div class="summary-item">
-
-            <span>
-                ${item.name} × ${item.quantity}
-            </span>
-
-            <strong>
-                ${itemTotal.toLocaleString()} HTG
-            </strong>
-
-        </div>
-
-        `;
-
-    });
-
-    totalElement.textContent =
-        total.toLocaleString() + " HTG";
-
-}
-
-
-/* =========================
-   CART MODAL
+   MODAL
 ========================= */
 
 function openCart(){
 
     document
         .getElementById("cartModal")
-        .classList.add("active");
+        .classList.add("show");
 
 }
+
 
 function closeCart(){
 
     document
         .getElementById("cartModal")
-        .classList.remove("active");
+        .classList.remove("show");
 
 }
 
 
 /* =========================
-   GO TO ORDER
+   ALLER AU FORMULAIRE
 ========================= */
 
 function goToOrder(){
@@ -1529,161 +1725,170 @@ function goToOrder(){
 
 
 /* =========================
-   MOBILE MENU
+   DATE MINIMUM
 ========================= */
 
-function toggleMenu(){
+const dateInput =
+    document.getElementById("date");
 
-    document
-        .getElementById("nav")
-        .classList.toggle("open");
+const today =
+    new Date();
 
-}
+const year =
+    today.getFullYear();
+
+const month =
+    String(today.getMonth()+1).padStart(2,"0");
+
+const day =
+    String(today.getDate()).padStart(2,"0");
+
+dateInput.min =
+    `${year}-${month}-${day}`;
 
 
 /* =========================
-   FORM SUBMIT
-========================= */
-
-document
-.getElementById("schoolForm")
-.addEventListener("submit",function(e){
-
-    e.preventDefault();
-
-    if(cart.length === 0){
-
-        alert(
-            "Veuillez d'abord ajouter au moins un produit au panier."
-        );
-
-        return;
-
-    }
-
-    const order = {
-
-        customerName:
-            document.getElementById("name").value,
-
-        phone:
-            document.getElementById("phone").value,
-
-        school:
-            document.getElementById("school").value,
-
-        date:
-            document.getElementById("date").value,
-
-        time:
-            document.getElementById("time").value,
-
-        className:
-            document.getElementById("class").value,
-
-        location:
-            document.getElementById("location").value,
-
-        note:
-            document.getElementById("note").value,
-
-        products: cart,
-
-        total: cart.reduce(
-            (sum,item)=>
-                sum + item.price * item.quantity,
-            0
-        )
-
-    };
-
-
-    /*
-       VERSION TEST
-
-       Pour l'instant la commande est
-       enregistrée dans le navigateur.
-
-       Dans la prochaine version,
-       on l'enverra au serveur Node.js
-       et à la base de données.
-    */
-
-    const existingOrders =
-        JSON.parse(
-            localStorage.getItem("dadaOrders") || "[]"
-        );
-
-    order.id =
-        "DADA-" +
-        Date.now();
-
-    order.status =
-        "Nouvelle";
-
-    order.createdAt =
-        new Date().toISOString();
-
-    existingOrders.push(order);
-
-    localStorage.setItem(
-        "dadaOrders",
-        JSON.stringify(existingOrders)
-    );
-
-
-    document
-        .getElementById("successMessage")
-        .classList.add("show");
-
-
-    alert(
-        "Commande " +
-        order.id +
-        " enregistrée avec succès !"
-    );
-
-
-    this.reset();
-
-    cart = [];
-
-    updateCart();
-
-
-    setTimeout(()=>{
-
-        document
-            .getElementById("successMessage")
-            .scrollIntoView({
-                behavior:"smooth",
-                block:"center"
-            });
-
-    },100);
-
-});
-
-
-/* =========================
-   CLOSE MODAL OUTSIDE
+   FORMULAIRE
 ========================= */
 
 document
-.getElementById("cartModal")
-.addEventListener("click",function(e){
+    .getElementById("orderForm")
+    .addEventListener("submit",function(event){
 
-    if(e.target === this){
+        event.preventDefault();
 
-        closeCart();
 
-    }
+        if(cart.length === 0){
 
-});
+            alert(
+                "Veuillez ajouter au moins un Pâté Kreyòl au panier."
+            );
+
+            return;
+
+        }
+
+
+        const name =
+            document.getElementById("name").value.trim();
+
+        const phone =
+            document.getElementById("phone").value.trim();
+
+        const school =
+            document.getElementById("school").value.trim();
+
+        const date =
+            document.getElementById("date").value;
+
+        const time =
+            document.getElementById("time").value;
+
+        const className =
+            document.getElementById("class").value.trim();
+
+        const location =
+            document.getElementById("location").value.trim();
+
+        const note =
+            document.getElementById("note").value.trim();
+
+
+        let total = 0;
+
+        let productsMessage = "";
+
+
+        cart.forEach(function(item){
+
+            const subtotal =
+                item.price * item.quantity;
+
+            total += subtotal;
+
+
+            productsMessage +=
+                "• " +
+                item.name +
+                " × " +
+                item.quantity +
+                " = " +
+                subtotal +
+                " HTG\n";
+
+        });
+
+
+        const reference =
+            "DADA-" +
+            Date.now().toString().slice(-8);
+
+
+        const whatsappMessage =
+
+`DADA — NOUVELLE COMMANDE
+
+Référence : ${reference}
+
+INFORMATIONS CLIENT
+
+Nom : ${name}
+Téléphone : ${phone}
+
+INFORMATIONS ÉCOLE
+
+École : ${school}
+Classe / Niveau : ${className || "Non précisé"}
+Lieu dans l'école : ${location || "Non précisé"}
+
+LIVRAISON
+
+Date : ${date}
+Heure : ${time}
+
+COMMANDE
+
+${productsMessage}
+TOTAL : ${total} HTG
+
+NOTE
+
+${note || "Aucune note supplémentaire."}
+
+Merci.`;
+
+
+
+        const whatsappURL =
+            "https://wa.me/" +
+            WHATSAPP_NUMBER +
+            "?text=" +
+            encodeURIComponent(whatsappMessage);
+
+
+        window.open(
+            whatsappURL,
+            "_blank"
+        );
+
+
+        const notice =
+            document.getElementById("successNotice");
+
+        notice.classList.add("show");
+
+
+        setTimeout(function(){
+
+            notice.classList.remove("show");
+
+        },8000);
+
+    });
 
 
 /* =========================
-   INITIALIZATION
+   INITIALISATION
 ========================= */
 
 updateCart();
@@ -1692,4 +1897,3 @@ updateCart();
 
 </body>
 </html>
-```
