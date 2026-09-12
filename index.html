@@ -5,16 +5,26 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>DADA — Pâtisserie & Commandes scolaires</title>
+<title>DADA — Pâtisserie & Commandes</title>
 
 <meta name="description"
-      content="DADA — Pâtés, pâtisseries et commandes pour les écoles en Haïti.">
+content="DADA — Pâtisserie artisanale et service de commande pour particuliers et établissements scolaires.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 
 <style>
+
+/* =========================================================
+   RESET
+========================================================= */
+
 *{
-    box-sizing:border-box;
     margin:0;
     padding:0;
+    box-sizing:border-box;
 }
 
 html{
@@ -22,310 +32,538 @@ html{
 }
 
 body{
-    font-family:Arial, Helvetica, sans-serif;
-    background:#fffaf5;
-    color:#292929;
+    font-family:"DM Sans",Arial,sans-serif;
+    background:#f8f5ef;
+    color:#181716;
+    overflow-x:hidden;
 }
 
-/* =========================
+button,
+input,
+select,
+textarea{
+    font:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+
+/* =========================================================
    VARIABLES
-========================= */
+========================================================= */
 
 :root{
-    --primary:#e85d04;
-    --primary-dark:#c94700;
-    --secondary:#ffba08;
-    --dark:#24170f;
-    --light:#fffaf5;
+
+    --black:#181716;
+    --black-soft:#242220;
+
+    --cream:#f8f5ef;
+    --cream-dark:#eee9df;
+
     --white:#ffffff;
-    --gray:#777;
-    --border:#eadfd6;
-    --success:#198754;
+
+    --brown:#70513f;
+    --brown-dark:#52392c;
+
+    --gold:#ae8a54;
+
+    --gray:#77716b;
+
+    --border:#ded8cf;
+
+    --max:1240px;
+
 }
 
-/* =========================
-   HEADER
-========================= */
 
-header{
-    position:sticky;
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+.container{
+    width:min(var(--max), calc(100% - 50px));
+    margin:auto;
+}
+
+.section{
+    padding:120px 0;
+}
+
+.eyebrow{
+    font-size:12px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    font-weight:700;
+    color:var(--gold);
+    margin-bottom:18px;
+}
+
+.section-title{
+    max-width:700px;
+}
+
+.section-title h2{
+    font-family:"Playfair Display",serif;
+    font-size:clamp(38px,5vw,64px);
+    line-height:1.05;
+    font-weight:600;
+    margin-bottom:20px;
+}
+
+.section-title p{
+    color:var(--gray);
+    line-height:1.8;
+    font-size:17px;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.header{
+    position:fixed;
     top:0;
+    left:0;
+    width:100%;
     z-index:1000;
-    background:rgba(255,255,255,.97);
-    border-bottom:1px solid var(--border);
-    box-shadow:0 3px 15px rgba(0,0,0,.06);
+    transition:.3s;
+}
+
+.header.scrolled{
+    background:rgba(248,245,239,.96);
+    backdrop-filter:blur(16px);
+    box-shadow:0 1px 0 rgba(24,23,22,.08);
 }
 
 .navbar{
-    max-width:1150px;
+    width:min(var(--max), calc(100% - 50px));
     margin:auto;
-    padding:15px 20px;
+
+    height:88px;
+
     display:flex;
     align-items:center;
     justify-content:space-between;
 }
 
 .logo{
-    font-size:30px;
-    font-weight:900;
-    color:var(--primary);
-    text-decoration:none;
-}
-
-.logo span{
-    color:var(--dark);
-}
-
-nav{
-    display:flex;
-    gap:25px;
-}
-
-nav a{
-    text-decoration:none;
-    color:var(--dark);
+    font-family:"Playfair Display",serif;
+    font-size:32px;
     font-weight:700;
-    transition:.2s;
+    letter-spacing:2px;
 }
 
-nav a:hover{
-    color:var(--primary);
+.logo small{
+    display:block;
+    font-family:"DM Sans",sans-serif;
+    font-size:7px;
+    letter-spacing:4px;
+    font-weight:700;
+    margin-top:-3px;
 }
 
-.cart-button{
-    border:0;
-    background:var(--primary);
-    color:white;
-    padding:11px 17px;
-    border-radius:25px;
-    cursor:pointer;
-    font-weight:bold;
-}
-
-.cart-button:hover{
-    background:var(--primary-dark);
-}
-
-.menu{
-    display:none;
-    font-size:26px;
-    cursor:pointer;
-}
-
-/* =========================
-   HERO
-========================= */
-
-.hero{
-    min-height:570px;
+.nav{
     display:flex;
     align-items:center;
+    gap:36px;
+}
+
+.nav a{
+    font-size:14px;
+    font-weight:600;
+    position:relative;
+}
+
+.nav a::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-7px;
+    width:0;
+    height:1px;
+    background:var(--black);
+    transition:.3s;
+}
+
+.nav a:hover::after{
+    width:100%;
+}
+
+.header-actions{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.cart-btn{
+    border:1px solid var(--black);
+    background:var(--black);
+    color:white;
+
+    height:44px;
+    padding:0 19px;
+
+    display:flex;
+    align-items:center;
+    gap:9px;
+
+    font-size:13px;
+    font-weight:700;
+
+    transition:.25s;
+}
+
+.cart-btn:hover{
+    background:transparent;
+    color:var(--black);
+}
+
+.cart-number{
+    min-width:20px;
+    height:20px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:50%;
+    background:var(--gold);
+    color:white;
+    font-size:11px;
+}
+
+.mobile-menu{
+    display:none;
+    border:0;
+    background:none;
+    font-size:24px;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero{
+    min-height:100vh;
+    position:relative;
+
+    display:flex;
+    align-items:center;
+
     background:
-        linear-gradient(rgba(36,23,15,.72),rgba(36,23,15,.72)),
-        url("https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=1600&q=80")
-        center/cover;
+        linear-gradient(
+            90deg,
+            rgba(20,18,16,.78) 0%,
+            rgba(20,18,16,.48) 48%,
+            rgba(20,18,16,.15) 100%
+        ),
+        url("https://images.unsplash.com/photo-1601050690117-94f5f6fa8bd7?auto=format&fit=crop&w=2000&q=90")
+        center/cover no-repeat;
+
     color:white;
 }
 
 .hero-content{
-    width:1150px;
-    max-width:92%;
+    width:min(var(--max), calc(100% - 50px));
     margin:auto;
+    padding-top:80px;
 }
 
-.badge{
-    display:inline-block;
-    background:var(--secondary);
-    color:var(--dark);
-    padding:8px 14px;
-    border-radius:20px;
-    font-weight:bold;
-    margin-bottom:18px;
+.hero-content > div{
+    max-width:720px;
+}
+
+.hero .eyebrow{
+    color:#d5b77f;
 }
 
 .hero h1{
-    font-size:clamp(42px,7vw,75px);
-    line-height:1;
-    max-width:750px;
-    margin-bottom:20px;
-}
-
-.hero p{
-    max-width:650px;
-    font-size:20px;
-    line-height:1.6;
+    font-family:"Playfair Display",serif;
+    font-size:clamp(50px,7vw,92px);
+    line-height:.98;
+    font-weight:500;
     margin-bottom:30px;
 }
 
-.hero-buttons{
+.hero p{
+    max-width:590px;
+    color:rgba(255,255,255,.82);
+    font-size:18px;
+    line-height:1.8;
+    margin-bottom:38px;
+}
+
+.hero-actions{
     display:flex;
-    gap:12px;
+    align-items:center;
+    gap:15px;
     flex-wrap:wrap;
 }
 
 .btn{
-    display:inline-block;
-    padding:14px 22px;
-    border-radius:8px;
-    text-decoration:none;
-    font-weight:bold;
-    cursor:pointer;
-    border:0;
-    font-size:16px;
+    min-height:52px;
+    padding:0 25px;
+
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    border:1px solid transparent;
+
+    font-size:13px;
+    font-weight:700;
+    letter-spacing:.3px;
+
+    transition:.3s;
 }
 
 .btn-primary{
-    background:var(--primary);
-    color:white;
+    background:white;
+    color:var(--black);
 }
 
 .btn-primary:hover{
-    background:var(--primary-dark);
+    background:var(--gold);
+    color:white;
 }
 
-.btn-light{
+.btn-outline{
+    border-color:rgba(255,255,255,.5);
+    color:white;
+}
+
+.btn-outline:hover{
     background:white;
-    color:var(--dark);
+    color:var(--black);
 }
 
-/* =========================
-   SECTIONS
-========================= */
 
-section{
-    padding:75px 20px;
+/* =========================================================
+   INTRO
+========================================================= */
+
+.intro{
+    background:var(--cream);
 }
 
-.container{
-    max-width:1150px;
-    margin:auto;
+.intro-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:100px;
+    align-items:center;
 }
 
-.section-title{
-    text-align:center;
-    margin-bottom:45px;
+.intro-image{
+    min-height:600px;
+
+    background:
+        url("https://images.unsplash.com/photo-1614707267537-2b1a6a5b5c8c?auto=format&fit=crop&w=1200&q=85")
+        center/cover;
 }
 
-.section-title h2{
-    font-size:38px;
-    color:var(--dark);
-    margin-bottom:10px;
+.intro-content{
+    max-width:560px;
 }
 
-.section-title p{
+.intro-content h2{
+    font-family:"Playfair Display",serif;
+    font-size:clamp(40px,5vw,65px);
+    line-height:1.05;
+    margin-bottom:25px;
+}
+
+.intro-content p{
     color:var(--gray);
+    line-height:1.9;
+    margin-bottom:20px;
 }
 
-/* =========================
-   PRODUCTS
-========================= */
+.signature{
+    margin-top:35px;
+    font-family:"Playfair Display",serif;
+    font-size:27px;
+    color:var(--brown);
+}
 
-.products{
+
+/* =========================================================
+   PRODUCTS
+========================================================= */
+
+.products-section{
+    background:white;
+}
+
+.products-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:end;
+    gap:30px;
+    margin-bottom:55px;
+}
+
+.products-header .section-title{
+    max-width:650px;
+}
+
+.products-grid{
     display:grid;
     grid-template-columns:repeat(3,1fr);
     gap:25px;
 }
 
 .product{
-    background:white;
-    border:1px solid var(--border);
-    border-radius:16px;
+    background:#faf9f6;
     overflow:hidden;
-    box-shadow:0 5px 20px rgba(0,0,0,.05);
-    transition:.25s;
-}
-
-.product:hover{
-    transform:translateY(-5px);
-    box-shadow:0 12px 30px rgba(0,0,0,.1);
+    position:relative;
 }
 
 .product-image{
-    height:210px;
-    background-size:cover;
+    height:390px;
     background-position:center;
+    background-size:cover;
+    transition:.6s;
 }
 
-.product-body{
-    padding:20px;
+.product:hover .product-image{
+    transform:scale(1.025);
 }
 
-.product-body h3{
-    color:var(--dark);
-    font-size:22px;
+.product-info{
+    padding:25px 24px 27px;
+}
+
+.product-top{
+    display:flex;
+    justify-content:space-between;
+    gap:20px;
+    align-items:start;
+}
+
+.product-name{
+    font-family:"Playfair Display",serif;
+    font-size:26px;
+}
+
+.product-price{
+    font-size:15px;
+    font-weight:700;
+    color:var(--brown);
+    white-space:nowrap;
+}
+
+.product-description{
+    color:var(--gray);
+    font-size:14px;
+    line-height:1.6;
+    margin:10px 0 20px;
+}
+
+.product-add{
+    width:100%;
+    height:46px;
+
+    border:1px solid var(--black);
+    background:var(--black);
+    color:white;
+
+    font-size:13px;
+    font-weight:700;
+
+    transition:.25s;
+}
+
+.product-add:hover{
+    background:transparent;
+    color:var(--black);
+}
+
+
+/* =========================================================
+   SCHOOL ORDER
+========================================================= */
+
+.school{
+    background:var(--black);
+    color:white;
+}
+
+.school-grid{
+    display:grid;
+    grid-template-columns:.8fr 1.2fr;
+    gap:100px;
+    align-items:start;
+}
+
+.school .section-title p{
+    color:#a8a29b;
+}
+
+.school-benefits{
+    margin-top:45px;
+}
+
+.benefit{
+    display:flex;
+    gap:20px;
+    padding:22px 0;
+    border-top:1px solid rgba(255,255,255,.12);
+}
+
+.benefit:last-child{
+    border-bottom:1px solid rgba(255,255,255,.12);
+}
+
+.benefit-number{
+    color:var(--gold);
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:2px;
+}
+
+.benefit h3{
+    font-size:15px;
+    margin-bottom:5px;
+}
+
+.benefit p{
+    color:#96918b;
+    font-size:13px;
+    line-height:1.6;
+}
+
+.order-card{
+    background:white;
+    color:var(--black);
+    padding:42px;
+}
+
+.order-card-header{
+    margin-bottom:32px;
+}
+
+.order-card-header h3{
+    font-family:"Playfair Display",serif;
+    font-size:34px;
     margin-bottom:8px;
 }
 
-.product-body p{
+.order-card-header p{
     color:var(--gray);
-    line-height:1.5;
-    margin-bottom:15px;
-}
-
-.product-bottom{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:10px;
-}
-
-.price{
-    font-size:21px;
-    font-weight:900;
-    color:var(--primary);
-}
-
-.add{
-    border:0;
-    background:var(--dark);
-    color:white;
-    padding:10px 14px;
-    border-radius:7px;
-    cursor:pointer;
-    font-weight:bold;
-}
-
-.add:hover{
-    background:var(--primary);
-}
-
-/* =========================
-   SCHOOL ORDER
-========================= */
-
-.school-section{
-    background:#fff0e5;
-}
-
-.school-box{
-    background:white;
-    max-width:850px;
-    margin:auto;
-    padding:35px;
-    border-radius:18px;
-    box-shadow:0 8px 30px rgba(0,0,0,.07);
-}
-
-.school-intro{
-    text-align:center;
-    margin-bottom:30px;
-}
-
-.school-intro h2{
-    font-size:35px;
-    color:var(--dark);
-    margin-bottom:10px;
-}
-
-.school-intro p{
-    color:var(--gray);
-    line-height:1.6;
+    font-size:14px;
 }
 
 .form-grid{
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:18px;
+    gap:19px;
 }
 
 .form-group{
@@ -337,324 +575,467 @@ section{
     grid-column:1/-1;
 }
 
-label{
-    font-weight:bold;
-    margin-bottom:7px;
-    color:var(--dark);
+.form-group label{
+    font-size:11px;
+    letter-spacing:1.2px;
+    text-transform:uppercase;
+    font-weight:700;
+    margin-bottom:8px;
 }
 
-input,
-select,
-textarea{
-    width:100%;
-    border:1px solid #d9ccc2;
-    border-radius:8px;
-    padding:13px;
-    font-size:15px;
+.form-group input,
+.form-group select,
+.form-group textarea{
+    border:1px solid #d8d2ca;
+    background:#fcfbf9;
+    min-height:48px;
+    padding:12px 14px;
     outline:none;
-    background:white;
+    color:var(--black);
+    transition:.2s;
 }
 
-input:focus,
-select:focus,
-textarea:focus{
-    border-color:var(--primary);
-    box-shadow:0 0 0 3px rgba(232,93,4,.1);
-}
-
-textarea{
+.form-group textarea{
     min-height:100px;
     resize:vertical;
 }
 
-.order-summary{
-    margin-top:25px;
-    background:#fff8f2;
-    border:1px solid var(--border);
-    padding:18px;
-    border-radius:10px;
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus{
+    border-color:var(--black);
 }
 
-.order-summary h3{
-    margin-bottom:10px;
+.form-order{
+    margin-top:30px;
+    border-top:1px solid #ddd8d1;
+    padding-top:25px;
 }
 
-.summary-empty{
+.form-order-title{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:15px;
+}
+
+.form-order-title strong{
+    font-size:14px;
+}
+
+.form-order-title span{
     color:var(--gray);
+    font-size:12px;
 }
 
-.summary-item{
+.form-products{
+    min-height:40px;
+}
+
+.form-product-row{
     display:flex;
     justify-content:space-between;
-    padding:8px 0;
-    border-bottom:1px solid #eadfd6;
+    padding:9px 0;
+    border-bottom:1px solid #eeeae4;
+    font-size:13px;
 }
 
-.total{
-    display:flex;
-    justify-content:space-between;
-    margin-top:15px;
-    font-size:20px;
-    font-weight:900;
-}
-
-.submit-order{
-    width:100%;
-    margin-top:20px;
-    background:var(--primary);
-    color:white;
-    border:0;
-    padding:15px;
-    border-radius:9px;
-    font-size:17px;
-    font-weight:bold;
-    cursor:pointer;
-}
-
-.submit-order:hover{
-    background:var(--primary-dark);
-}
-
-/* =========================
-   HOW IT WORKS
-========================= */
-
-.steps{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:25px;
-}
-
-.step{
-    text-align:center;
-    padding:25px;
-}
-
-.step-number{
-    width:65px;
-    height:65px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    margin:0 auto 18px;
-    border-radius:50%;
-    background:var(--primary);
-    color:white;
-    font-size:25px;
-    font-weight:900;
-}
-
-.step h3{
-    margin-bottom:10px;
-    color:var(--dark);
-}
-
-.step p{
+.empty-order{
     color:var(--gray);
-    line-height:1.5;
+    font-size:13px;
+    padding:10px 0;
 }
 
-/* =========================
-   CART MODAL
-========================= */
-
-.modal{
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.55);
-    z-index:2000;
-    display:none;
-    align-items:center;
-    justify-content:center;
-    padding:20px;
-}
-
-.modal.active{
-    display:flex;
-}
-
-.modal-box{
-    background:white;
-    width:100%;
-    max-width:550px;
-    max-height:90vh;
-    overflow:auto;
-    border-radius:16px;
-    padding:25px;
-}
-
-.modal-header{
+.form-total{
     display:flex;
     justify-content:space-between;
-    align-items:center;
-    margin-bottom:20px;
-}
-
-.modal-header h2{
-    color:var(--dark);
-}
-
-.close{
-    background:none;
-    border:0;
-    font-size:28px;
-    cursor:pointer;
-}
-
-.cart-item{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:10px;
-    border-bottom:1px solid var(--border);
-    padding:12px 0;
-}
-
-.cart-item-info strong{
-    display:block;
-}
-
-.cart-item-info small{
-    color:var(--gray);
-}
-
-.qty{
-    display:flex;
-    align-items:center;
-    gap:8px;
-}
-
-.qty button{
-    width:28px;
-    height:28px;
-    border:0;
-    border-radius:5px;
-    cursor:pointer;
-    background:#eee;
-}
-
-.remove{
-    color:#d00000;
-    background:none;
-    border:0;
-    cursor:pointer;
+    margin-top:18px;
     font-size:18px;
+    font-weight:700;
 }
 
-.cart-total{
-    display:flex;
-    justify-content:space-between;
-    margin-top:20px;
-    font-size:22px;
-    font-weight:900;
-}
-
-.go-order{
+.submit{
     width:100%;
+    margin-top:22px;
+    height:54px;
+
+    border:1px solid var(--black);
+    background:var(--black);
+    color:white;
+
+    font-weight:700;
+    font-size:13px;
+
+    transition:.25s;
+}
+
+.submit:hover{
+    background:var(--brown);
+    border-color:var(--brown);
+}
+
+.success-message{
+    display:none;
     margin-top:20px;
-    padding:14px;
-    border:0;
-    border-radius:8px;
-    background:var(--primary);
-    color:white;
-    font-weight:bold;
-    cursor:pointer;
-}
-
-/* =========================
-   FOOTER
-========================= */
-
-footer{
-    background:var(--dark);
-    color:white;
-    padding:45px 20px;
-}
-
-.footer-content{
-    max-width:1150px;
-    margin:auto;
-    display:flex;
-    justify-content:space-between;
-    gap:30px;
-    flex-wrap:wrap;
-}
-
-.footer-brand h2{
-    color:var(--secondary);
-    margin-bottom:10px;
-}
-
-.footer-brand p{
-    color:#ddd;
-    max-width:450px;
+    padding:15px;
+    background:#edf6ef;
+    color:#245c31;
+    border:1px solid #c4dec9;
+    font-size:13px;
     line-height:1.6;
 }
 
-.copyright{
-    margin-top:30px;
-    padding-top:20px;
-    border-top:1px solid rgba(255,255,255,.15);
-    text-align:center;
-    color:#bbb;
-}
-
-/* =========================
-   SUCCESS
-========================= */
-
-.success{
-    display:none;
-    background:#e9f8ef;
-    border:1px solid #a8dfba;
-    color:#146c35;
-    padding:15px;
-    border-radius:8px;
-    margin-top:20px;
-    line-height:1.5;
-}
-
-.success.show{
+.success-message.show{
     display:block;
 }
 
-/* =========================
-   MOBILE
-========================= */
 
-@media(max-width:800px){
+/* =========================================================
+   PHILOSOPHY
+========================================================= */
 
-    nav{
+.philosophy{
+    background:var(--cream-dark);
+    text-align:center;
+}
+
+.philosophy-inner{
+    max-width:900px;
+    margin:auto;
+}
+
+.philosophy h2{
+    font-family:"Playfair Display",serif;
+    font-size:clamp(42px,6vw,75px);
+    line-height:1.1;
+    font-weight:500;
+}
+
+.philosophy p{
+    max-width:650px;
+    margin:25px auto 0;
+    color:var(--gray);
+    line-height:1.8;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer{
+    background:#11100f;
+    color:white;
+    padding:75px 0 25px;
+}
+
+.footer-grid{
+    display:grid;
+    grid-template-columns:1.4fr .7fr .7fr;
+    gap:60px;
+    padding-bottom:60px;
+}
+
+.footer-logo{
+    font-family:"Playfair Display",serif;
+    font-size:38px;
+    letter-spacing:2px;
+    margin-bottom:15px;
+}
+
+.footer-brand p{
+    color:#8d8984;
+    max-width:400px;
+    line-height:1.8;
+    font-size:14px;
+}
+
+.footer h4{
+    font-size:12px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    margin-bottom:20px;
+}
+
+.footer-links{
+    display:flex;
+    flex-direction:column;
+    gap:13px;
+}
+
+.footer-links a{
+    color:#8d8984;
+    font-size:13px;
+    transition:.2s;
+}
+
+.footer-links a:hover{
+    color:white;
+}
+
+.footer-bottom{
+    border-top:1px solid rgba(255,255,255,.1);
+    padding-top:22px;
+    color:#6d6964;
+    font-size:12px;
+
+    display:flex;
+    justify-content:space-between;
+    gap:20px;
+}
+
+
+/* =========================================================
+   CART DRAWER
+========================================================= */
+
+.overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.5);
+    z-index:2000;
+
+    opacity:0;
+    visibility:hidden;
+    transition:.3s;
+}
+
+.overlay.active{
+    opacity:1;
+    visibility:visible;
+}
+
+.cart-drawer{
+    position:fixed;
+    top:0;
+    right:0;
+    height:100vh;
+    width:min(480px,100%);
+    background:white;
+    z-index:2100;
+
+    transform:translateX(100%);
+    transition:.35s;
+
+    display:flex;
+    flex-direction:column;
+}
+
+.cart-drawer.active{
+    transform:translateX(0);
+}
+
+.cart-header{
+    height:85px;
+    padding:0 27px;
+
+    border-bottom:1px solid var(--border);
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.cart-header h2{
+    font-family:"Playfair Display",serif;
+    font-size:27px;
+}
+
+.close-cart{
+    border:0;
+    background:none;
+    font-size:28px;
+}
+
+.cart-content{
+    flex:1;
+    overflow:auto;
+    padding:20px 27px;
+}
+
+.cart-line{
+    display:grid;
+    grid-template-columns:1fr auto;
+    gap:15px;
+
+    padding:18px 0;
+    border-bottom:1px solid #eeeae4;
+}
+
+.cart-line-name{
+    font-family:"Playfair Display",serif;
+    font-size:18px;
+}
+
+.cart-line-price{
+    color:var(--gray);
+    font-size:12px;
+    margin-top:4px;
+}
+
+.cart-controls{
+    display:flex;
+    align-items:center;
+    gap:9px;
+}
+
+.cart-controls button{
+    width:28px;
+    height:28px;
+    border:1px solid var(--border);
+    background:white;
+}
+
+.remove-item{
+    border:0!important;
+    color:#9b2c2c;
+    margin-left:4px;
+}
+
+.cart-footer{
+    padding:25px 27px;
+    border-top:1px solid var(--border);
+}
+
+.cart-total-row{
+    display:flex;
+    justify-content:space-between;
+    font-size:19px;
+    font-weight:700;
+    margin-bottom:18px;
+}
+
+.cart-checkout{
+    width:100%;
+    height:52px;
+    border:0;
+    background:var(--black);
+    color:white;
+    font-weight:700;
+}
+
+.empty-cart{
+    color:var(--gray);
+    text-align:center;
+    padding:50px 10px;
+    font-size:14px;
+}
+
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+.toast{
+    position:fixed;
+    bottom:25px;
+    left:50%;
+    transform:translate(-50%,120px);
+
+    background:var(--black);
+    color:white;
+
+    padding:14px 20px;
+
+    font-size:13px;
+    z-index:3000;
+
+    opacity:0;
+    transition:.3s;
+}
+
+.toast.show{
+    opacity:1;
+    transform:translate(-50%,0);
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:1000px){
+
+    .nav{
         display:none;
-        position:absolute;
-        top:70px;
-        left:0;
-        right:0;
-        background:white;
-        flex-direction:column;
-        padding:20px;
-        border-bottom:1px solid var(--border);
     }
 
-    nav.open{
-        display:flex;
-    }
-
-    .menu{
+    .mobile-menu{
         display:block;
     }
 
-    .cart-button{
-        margin-left:auto;
-        margin-right:12px;
+    .intro-grid,
+    .school-grid{
+        grid-template-columns:1fr;
+        gap:50px;
     }
 
-    .products{
+    .intro-image{
+        min-height:500px;
+    }
+
+    .products-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .school-grid{
+        gap:45px;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+}
+
+@media(max-width:650px){
+
+    .container,
+    .navbar,
+    .hero-content{
+        width:calc(100% - 32px);
+    }
+
+    .navbar{
+        height:75px;
+    }
+
+    .logo{
+        font-size:27px;
+    }
+
+    .header-actions .cart-btn{
+        height:40px;
+        padding:0 12px;
+    }
+
+    .hero{
+        min-height:720px;
+    }
+
+    .hero h1{
+        font-size:52px;
+    }
+
+    .hero p{
+        font-size:16px;
+    }
+
+    .section{
+        padding:80px 0;
+    }
+
+    .products-header{
+        display:block;
+        margin-bottom:35px;
+    }
+
+    .products-grid{
         grid-template-columns:1fr;
     }
 
-    .steps{
-        grid-template-columns:1fr;
+    .product-image{
+        height:330px;
     }
 
     .form-grid{
@@ -665,86 +1046,103 @@ footer{
         grid-column:auto;
     }
 
-    .school-box{
-        padding:22px;
+    .order-card{
+        padding:25px 20px;
     }
 
-    section{
-        padding:55px 15px;
+    .footer-grid{
+        grid-template-columns:1fr;
+        gap:40px;
     }
 
-    .hero{
-        min-height:600px;
+    .footer-bottom{
+        flex-direction:column;
     }
 
-    .hero p{
-        font-size:17px;
-    }
 }
 </style>
 </head>
 
 <body>
 
-<!-- =========================
-     HEADER
-========================= -->
 
-<header>
+<!-- =======================================================
+     HEADER
+======================================================= -->
+
+<header class="header" id="header">
 
 <div class="navbar">
 
 <a href="#accueil" class="logo">
-DADA<span>.</span>
+DADA
+<small>PÂTISSERIE & SERVICE</small>
 </a>
 
-<nav id="nav">
+<nav class="nav">
+
 <a href="#accueil">Accueil</a>
-<a href="#produits">Produits</a>
+<a href="#carte">La carte</a>
 <a href="#commande">Commande école</a>
-<a href="#fonctionnement">Comment ça marche</a>
+<a href="#maison">Notre maison</a>
+
 </nav>
 
-<button class="cart-button" onclick="openCart()">
-🛒 Panier (<span id="cartCount">0</span>)
+<div class="header-actions">
+
+<button class="cart-btn" onclick="openCart()">
+Panier
+<span class="cart-number" id="cartCount">0</span>
 </button>
 
-<div class="menu" onclick="toggleMenu()">☰</div>
+<button class="mobile-menu" onclick="toggleMobileMenu()">
+☰
+</button>
+
+</div>
 
 </div>
 
 </header>
 
 
-<!-- =========================
+<!-- =======================================================
      HERO
-========================= -->
+======================================================= -->
+
+<main>
 
 <section class="hero" id="accueil">
 
 <div class="hero-content">
 
-<span class="badge">🥟 Pâtés & gourmandises</span>
+<div>
+
+<div class="eyebrow">
+DADA — Pâtisserie & Service
+</div>
 
 <h1>
-Les saveurs de DADA,
-directement à votre école.
+Le goût du savoir-faire.
 </h1>
 
 <p>
-Commandez facilement vos pâtés et autres produits
-DADA pour une livraison à l'école, à l'heure qui vous convient.
+Des pâtés préparés avec soin, des produits sélectionnés
+avec exigence et un service pensé pour vous accompagner,
+à la maison comme à l'école.
 </p>
 
-<div class="hero-buttons">
+<div class="hero-actions">
 
-<a href="#produits" class="btn btn-primary">
-Voir les produits
+<a href="#carte" class="btn btn-primary">
+Découvrir la carte
 </a>
 
-<a href="#commande" class="btn btn-light">
-🏫 Commander pour une école
+<a href="#commande" class="btn btn-outline">
+Commander pour une école
 </a>
+
+</div>
 
 </div>
 
@@ -753,121 +1151,210 @@ Voir les produits
 </section>
 
 
-<!-- =========================
-     PRODUCTS
-========================= -->
+<!-- =======================================================
+     ABOUT
+======================================================= -->
 
-<section id="produits">
+<section class="section intro" id="maison">
 
 <div class="container">
 
-<div class="section-title">
+<div class="intro-grid">
 
-<h2>Nos produits</h2>
+<div class="intro-image"></div>
+
+<div class="intro-content">
+
+<div class="eyebrow">
+Notre maison
+</div>
+
+<h2>
+La simplicité,
+élevée au niveau de l'excellence.
+</h2>
 
 <p>
-Choisissez vos produits et ajoutez-les au panier.
+Chez DADA, chaque produit est préparé avec une attention
+particulière portée au goût, à la qualité et à la régularité.
+</p>
+
+<p>
+Notre ambition est simple : offrir une expérience agréable,
+du premier clic jusqu'à la réception de votre commande.
+</p>
+
+<div class="signature">
+DADA
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =======================================================
+     PRODUCTS
+======================================================= -->
+
+<section class="section products-section" id="carte">
+
+<div class="container">
+
+<div class="products-header">
+
+<div class="section-title">
+
+<div class="eyebrow">
+La carte
+</div>
+
+<h2>
+Nos incontournables.
+</h2>
+
+<p>
+Une sélection pensée pour les petites faims,
+les pauses scolaires et les moments à partager.
 </p>
 
 </div>
 
+</div>
 
-<div class="products">
+
+<div class="products-grid">
+
 
 <!-- PRODUCT 1 -->
 
-<div class="product">
+<article class="product">
 
-<div class="product-image"
-style="background-image:url('https://images.unsplash.com/photo-1601050690117-94f5f6fa8bd7?auto=format&fit=crop&w=800&q=80');">
+<div
+class="product-image"
+style="
+background-image:url('https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=1000&q=85');
+">
 </div>
 
-<div class="product-body">
+<div class="product-info">
 
-<h3>Pâté classique</h3>
+<div class="product-top">
 
-<p>
-Un délicieux pâté préparé avec soin.
+<h3 class="product-name">
+Pâté classique
+</h3>
+
+<span class="product-price">
+100 HTG
+</span>
+
+</div>
+
+<p class="product-description">
+Une pâte délicatement préparée et une garniture
+savoureuse pour une pause simple et généreuse.
 </p>
 
-<div class="product-bottom">
-
-<span class="price">100 HTG</span>
-
-<button class="add"
-onclick="addToCart('Pâté classique',100)">
-Ajouter
+<button
+class="product-add"
+onclick="addToCart('Pâté classique',100)"
+>
+Ajouter au panier
 </button>
 
 </div>
 
-</div>
-
-</div>
+</article>
 
 
 <!-- PRODUCT 2 -->
 
-<div class="product">
+<article class="product">
 
-<div class="product-image"
-style="background-image:url('https://images.unsplash.com/photo-1626196343793-7d3d0f4b7f4f?auto=format&fit=crop&w=800&q=80');">
+<div
+class="product-image"
+style="
+background-image:url('https://images.unsplash.com/photo-1626196343793-7d3d0f4b7f4f?auto=format&fit=crop&w=1000&q=85');
+">
 </div>
 
-<div class="product-body">
+<div class="product-info">
 
-<h3>Pâté au poulet</h3>
+<div class="product-top">
 
-<p>
-Une garniture savoureuse pour une pause gourmande.
+<h3 class="product-name">
+Pâté au poulet
+</h3>
+
+<span class="product-price">
+150 HTG
+</span>
+
+</div>
+
+<p class="product-description">
+Une recette généreuse au poulet, pensée pour
+les amateurs de saveurs plus prononcées.
 </p>
 
-<div class="product-bottom">
-
-<span class="price">150 HTG</span>
-
-<button class="add"
-onclick="addToCart('Pâté au poulet',150)">
-Ajouter
+<button
+class="product-add"
+onclick="addToCart('Pâté au poulet',150)"
+>
+Ajouter au panier
 </button>
 
 </div>
 
-</div>
-
-</div>
+</article>
 
 
 <!-- PRODUCT 3 -->
 
-<div class="product">
+<article class="product">
 
-<div class="product-image"
-style="background-image:url('https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=800&q=80');">
+<div
+class="product-image"
+style="
+background-image:url('https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=1000&q=85');
+">
 </div>
 
-<div class="product-body">
+<div class="product-info">
 
-<h3>Gâteau</h3>
+<div class="product-top">
 
-<p>
-Une douceur idéale pour les événements scolaires.
+<h3 class="product-name">
+Gâteau
+</h3>
+
+<span class="product-price">
+500 HTG
+</span>
+
+</div>
+
+<p class="product-description">
+Une douceur préparée pour accompagner
+vos célébrations et événements.
 </p>
 
-<div class="product-bottom">
-
-<span class="price">500 HTG</span>
-
-<button class="add"
-onclick="addToCart('Gâteau',500)">
-Ajouter
+<button
+class="product-add"
+onclick="addToCart('Gâteau',500)"
+>
+Ajouter au panier
 </button>
 
 </div>
 
-</div>
+</article>
 
-</div>
 
 </div>
 
@@ -876,23 +1363,124 @@ Ajouter
 </section>
 
 
-<!-- =========================
+<!-- =======================================================
      SCHOOL ORDER
-========================= -->
+======================================================= -->
 
-<section class="school-section" id="commande">
+<section class="section school" id="commande">
 
 <div class="container">
 
-<div class="school-box">
+<div class="school-grid">
 
-<div class="school-intro">
 
-<h2>🏫 Commande pour une école</h2>
+<div>
+
+<div class="section-title">
+
+<div class="eyebrow">
+Service scolaire
+</div>
+
+<h2>
+Votre école.
+Votre commande.
+Votre moment.
+</h2>
 
 <p>
-Remplissez le formulaire ci-dessous pour organiser
-la livraison de votre commande directement à votre école.
+DADA simplifie les commandes destinées aux établissements
+scolaires. Choisissez vos produits, indiquez les informations
+nécessaires et sélectionnez l'heure souhaitée.
+</p>
+
+</div>
+
+
+<div class="school-benefits">
+
+<div class="benefit">
+
+<div class="benefit-number">
+01
+</div>
+
+<div>
+
+<h3>
+Une commande organisée
+</h3>
+
+<p>
+Toutes les informations sont regroupées
+dans une seule demande.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="benefit">
+
+<div class="benefit-number">
+02
+</div>
+
+<div>
+
+<h3>
+Une heure précise
+</h3>
+
+<p>
+Indiquez le moment auquel vous souhaitez
+recevoir votre commande.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="benefit">
+
+<div class="benefit-number">
+03
+</div>
+
+<div>
+
+<h3>
+Un service pensé pour les écoles
+</h3>
+
+<p>
+Un système conçu pour rendre les commandes
+plus simples et plus efficaces.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- ORDER FORM -->
+
+<div class="order-card">
+
+<div class="order-card-header">
+
+<h3>
+Passer une commande
+</h3>
+
+<p>
+Remplissez les informations ci-dessous.
 </p>
 
 </div>
@@ -900,18 +1488,20 @@ la livraison de votre commande directement à votre école.
 
 <form id="schoolForm">
 
+
 <div class="form-grid">
+
 
 <div class="form-group">
 
-<label for="name">
-Nom complet *
+<label for="customerName">
+Nom complet
 </label>
 
 <input
+id="customerName"
 type="text"
-id="name"
-placeholder="Ex : Jean Pierre"
+placeholder="Votre nom"
 required
 >
 
@@ -921,13 +1511,13 @@ required
 <div class="form-group">
 
 <label for="phone">
-Numéro de téléphone *
+Téléphone
 </label>
 
 <input
-type="tel"
 id="phone"
-placeholder="Ex : 37 00 00 00"
+type="tel"
+placeholder="Votre numéro"
 required
 >
 
@@ -936,14 +1526,14 @@ required
 
 <div class="form-group full">
 
-<label for="school">
-Nom de l'école *
+<label for="schoolName">
+Établissement scolaire
 </label>
 
 <input
+id="schoolName"
 type="text"
-id="school"
-placeholder="Ex : Collège ..."
+placeholder="Nom de votre école"
 required
 >
 
@@ -952,13 +1542,13 @@ required
 
 <div class="form-group">
 
-<label for="date">
-Date de livraison *
+<label for="orderDate">
+Date
 </label>
 
 <input
+id="orderDate"
 type="date"
-id="date"
 required
 >
 
@@ -967,13 +1557,13 @@ required
 
 <div class="form-group">
 
-<label for="time">
-Heure souhaitée *
+<label for="orderTime">
+Heure souhaitée
 </label>
 
 <input
+id="orderTime"
 type="time"
-id="time"
 required
 >
 
@@ -982,14 +1572,14 @@ required
 
 <div class="form-group">
 
-<label for="class">
-Classe / niveau
+<label for="className">
+Classe / Niveau
 </label>
 
 <input
+id="className"
 type="text"
-id="class"
-placeholder="Ex : NS4"
+placeholder="Ex. NS4"
 >
 
 </div>
@@ -997,18 +1587,35 @@ placeholder="Ex : NS4"
 
 <div class="form-group">
 
-<label for="location">
-Lieu dans l'école
+<label for="deliveryPlace">
+Lieu de livraison
 </label>
 
-<select id="location">
+<select id="deliveryPlace">
 
-<option value="">Choisir</option>
-<option>Portail de l'école</option>
-<option>Salle de classe</option>
-<option>Administration</option>
-<option>Cour de l'école</option>
-<option>Autre</option>
+<option value="">
+Sélectionner
+</option>
+
+<option>
+Portail de l'école
+</option>
+
+<option>
+Administration
+</option>
+
+<option>
+Salle de classe
+</option>
+
+<option>
+Cour de l'école
+</option>
+
+<option>
+Autre
+</option>
 
 </select>
 
@@ -1017,12 +1624,12 @@ Lieu dans l'école
 
 <div class="form-group full">
 
-<label for="note">
-Remarque
+<label for="message">
+Informations complémentaires
 </label>
 
 <textarea
-id="note"
+id="message"
 placeholder="Une précision concernant votre commande..."
 ></textarea>
 
@@ -1031,23 +1638,35 @@ placeholder="Une précision concernant votre commande..."
 </div>
 
 
-<!-- ORDER SUMMARY -->
+<div class="form-order">
 
-<div class="order-summary">
+<div class="form-order-title">
 
-<h3>🛒 Votre commande</h3>
+<strong>
+Votre sélection
+</strong>
 
-<div id="formSummary">
-
-<p class="summary-empty">
-Aucun produit sélectionné.
-</p>
+<span>
+Depuis votre panier
+</span>
 
 </div>
 
-<div class="total">
+<div
+class="form-products"
+id="formProducts"
+>
+<div class="empty-order">
+Aucun produit dans votre commande.
+</div>
+</div>
 
-<span>Total</span>
+
+<div class="form-total">
+
+<span>
+Total
+</span>
 
 <span id="formTotal">
 0 HTG
@@ -1060,20 +1679,20 @@ Aucun produit sélectionné.
 
 <button
 type="submit"
-class="submit-order"
+class="submit"
 >
-✅ Confirmer la commande
+Confirmer la commande
 </button>
 
 
 <div
-class="success"
+class="success-message"
 id="successMessage"
 >
-<strong>Commande enregistrée !</strong><br>
-Votre demande de commande a été préparée.
-Le marchand pourra confirmer la livraison.
+<strong>Votre commande a été enregistrée.</strong><br>
+Référence : <span id="orderReference"></span>
 </div>
+
 
 </form>
 
@@ -1081,70 +1700,35 @@ Le marchand pourra confirmer la livraison.
 
 </div>
 
+</div>
+
 </section>
 
 
-<!-- =========================
-     HOW IT WORKS
-========================= -->
+<!-- =======================================================
+     PHILOSOPHY
+======================================================= -->
 
-<section id="fonctionnement">
+<section class="section philosophy">
 
 <div class="container">
 
-<div class="section-title">
+<div class="philosophy-inner">
 
-<h2>Comment ça marche ?</h2>
-
-<p>
-Commander pour votre école est simple.
-</p>
-
+<div class="eyebrow">
+L'expérience DADA
 </div>
 
-
-<div class="steps">
-
-<div class="step">
-
-<div class="step-number">1</div>
-
-<h3>Choisissez</h3>
+<h2>
+Bien préparer.
+Bien servir.
+Bien accompagner.
+</h2>
 
 <p>
-Sélectionnez les produits DADA
-que vous souhaitez commander.
+Parce qu'une bonne commande ne se résume pas à un produit,
+DADA met l'accent sur la qualité, la simplicité et le service.
 </p>
-
-</div>
-
-
-<div class="step">
-
-<div class="step-number">2</div>
-
-<h3>Indiquez votre école</h3>
-
-<p>
-Donnez votre nom, votre école,
-votre téléphone, la date et l'heure.
-</p>
-
-</div>
-
-
-<div class="step">
-
-<div class="step-number">3</div>
-
-<h3>Recevez votre commande</h3>
-
-<p>
-DADA prépare votre commande
-pour la livraison à l'école.
-</p>
-
-</div>
 
 </div>
 
@@ -1152,87 +1736,137 @@ pour la livraison à l'école.
 
 </section>
 
+</main>
 
-<!-- =========================
+
+<!-- =======================================================
      FOOTER
-========================= -->
+======================================================= -->
 
-<footer>
+<footer class="footer">
 
-<div class="footer-content">
+<div class="container">
+
+<div class="footer-grid">
 
 <div class="footer-brand">
 
-<h2>DADA.</h2>
+<div class="footer-logo">
+DADA
+</div>
 
 <p>
-Pâtés et gourmandises préparés avec soin,
-avec un service de commande pratique
-pour les écoles.
+Pâtisserie et service de commande.
+Une expérience pensée pour les particuliers
+et les établissements scolaires.
 </p>
 
 </div>
 
+
 <div>
 
-<strong>Navigation</strong>
+<h4>
+Navigation
+</h4>
 
-<br><br>
+<div class="footer-links">
 
-<a href="#accueil" style="color:#ddd;text-decoration:none;">
-Accueil
-</a>
-
-<br><br>
-
-<a href="#produits" style="color:#ddd;text-decoration:none;">
-Produits
-</a>
-
-<br><br>
-
-<a href="#commande" style="color:#ddd;text-decoration:none;">
-Commande école
-</a>
+<a href="#accueil">Accueil</a>
+<a href="#carte">La carte</a>
+<a href="#commande">Commande école</a>
+<a href="#maison">Notre maison</a>
 
 </div>
 
 </div>
 
-<div class="copyright">
 
-© 2026 DADA — Tous droits réservés.
+<div>
+
+<h4>
+Service
+</h4>
+
+<div class="footer-links">
+
+<a href="#commande">Commander</a>
+<a href="#carte">Nos produits</a>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="footer-bottom">
+
+<span>
+© 2026 DADA. Tous droits réservés.
+</span>
+
+<span>
+Pâtisserie & Service
+</span>
+
+</div>
 
 </div>
 
 </footer>
 
 
-<!-- =========================
-     CART MODAL
-========================= -->
+<!-- =======================================================
+     OVERLAY
+======================================================= -->
 
-<div class="modal" id="cartModal">
+<div
+class="overlay"
+id="overlay"
+onclick="closeCart()"
+></div>
 
-<div class="modal-box">
 
-<div class="modal-header">
+<!-- =======================================================
+     CART
+======================================================= -->
 
-<h2>🛒 Votre panier</h2>
+<aside
+class="cart-drawer"
+id="cartDrawer"
+>
 
-<button class="close" onclick="closeCart()">
+<div class="cart-header">
+
+<h2>
+Votre panier
+</h2>
+
+<button
+class="close-cart"
+onclick="closeCart()"
+>
 ×
 </button>
 
 </div>
 
 
-<div id="cartItems"></div>
+<div
+class="cart-content"
+id="cartContent"
+>
+</div>
 
 
-<div class="cart-total">
+<div class="cart-footer">
 
-<span>Total</span>
+<div class="cart-total-row">
+
+<span>
+Total
+</span>
 
 <span id="cartTotal">
 0 HTG
@@ -1240,35 +1874,69 @@ Commande école
 
 </div>
 
-
 <button
-class="go-order"
+class="cart-checkout"
 onclick="goToOrder()"
 >
-🏫 Continuer vers la commande école
+Continuer la commande
 </button>
 
 </div>
 
+</aside>
+
+
+<!-- =======================================================
+     TOAST
+======================================================= -->
+
+<div
+class="toast"
+id="toast"
+>
+Produit ajouté au panier.
 </div>
 
 
 <script>
 
-/* =========================
+/* =========================================================
    DATA
-========================= */
+========================================================= */
 
 let cart = [];
 
 
-/* =========================
-   ADD TO CART
-========================= */
+/* =========================================================
+   HEADER SCROLL
+========================================================= */
 
-function addToCart(name, price){
+const header =
+document.getElementById("header");
 
-    const existing = cart.find(item => item.name === name);
+window.addEventListener("scroll",()=>{
+
+    if(window.scrollY > 30){
+
+        header.classList.add("scrolled");
+
+    }else{
+
+        header.classList.remove("scrolled");
+
+    }
+
+});
+
+
+/* =========================================================
+   CART
+========================================================= */
+
+function addToCart(name,price){
+
+    const existing =
+    cart.find(item => item.name === name);
 
     if(existing){
 
@@ -1277,8 +1945,8 @@ function addToCart(name, price){
     }else{
 
         cart.push({
-            name:name,
-            price:price,
+            name,
+            price,
             quantity:1
         });
 
@@ -1286,125 +1954,16 @@ function addToCart(name, price){
 
     updateCart();
 
-}
-
-
-/* =========================
-   UPDATE CART
-========================= */
-
-function updateCart(){
-
-    const count = cart.reduce(
-        (total,item)=>total + item.quantity,
-        0
-    );
-
-    document.getElementById("cartCount").textContent = count;
-
-    renderCart();
-
-    renderFormSummary();
+    showToast("Produit ajouté au panier.");
 
 }
 
 
-/* =========================
-   RENDER CART
-========================= */
+function changeQuantity(index,value){
 
-function renderCart(){
+    if(!cart[index]) return;
 
-    const container =
-        document.getElementById("cartItems");
-
-    const totalElement =
-        document.getElementById("cartTotal");
-
-    if(cart.length === 0){
-
-        container.innerHTML =
-            `<p style="color:#777;">
-                Votre panier est vide.
-            </p>`;
-
-        totalElement.textContent = "0 HTG";
-
-        return;
-
-    }
-
-    let total = 0;
-
-    container.innerHTML = "";
-
-    cart.forEach((item,index)=>{
-
-        const itemTotal =
-            item.price * item.quantity;
-
-        total += itemTotal;
-
-        container.innerHTML += `
-
-        <div class="cart-item">
-
-            <div class="cart-item-info">
-
-                <strong>${item.name}</strong>
-
-                <small>
-                    ${item.price} HTG × ${item.quantity}
-                </small>
-
-            </div>
-
-            <div class="qty">
-
-                <button
-                    onclick="changeQuantity(${index},-1)"
-                >
-                    −
-                </button>
-
-                <strong>
-                    ${item.quantity}
-                </strong>
-
-                <button
-                    onclick="changeQuantity(${index},1)"
-                >
-                    +
-                </button>
-
-                <button
-                    class="remove"
-                    onclick="removeItem(${index})"
-                >
-                    ×
-                </button>
-
-            </div>
-
-        </div>
-
-        `;
-
-    });
-
-    totalElement.textContent =
-        total.toLocaleString() + " HTG";
-
-}
-
-
-/* =========================
-   CHANGE QUANTITY
-========================= */
-
-function changeQuantity(index, amount){
-
-    cart[index].quantity += amount;
+    cart[index].quantity += value;
 
     if(cart[index].quantity <= 0){
 
@@ -1417,10 +1976,6 @@ function changeQuantity(index, amount){
 }
 
 
-/* =========================
-   REMOVE
-========================= */
-
 function removeItem(index){
 
     cart.splice(index,1);
@@ -1430,218 +1985,349 @@ function removeItem(index){
 }
 
 
-/* =========================
-   FORM SUMMARY
-========================= */
+function updateCart(){
 
-function renderFormSummary(){
+    const count =
+    cart.reduce(
+        (sum,item)=>sum + item.quantity,
+        0
+    );
 
-    const summary =
-        document.getElementById("formSummary");
+    document.getElementById("cartCount")
+    .textContent = count;
 
-    const totalElement =
-        document.getElementById("formTotal");
+
+    let total = 0;
+
+    const content =
+    document.getElementById("cartContent");
 
     if(cart.length === 0){
 
-        summary.innerHTML =
-            `<p class="summary-empty">
-                Aucun produit sélectionné.
-            </p>`;
+        content.innerHTML = `
+            <div class="empty-cart">
+                Votre panier est actuellement vide.
+            </div>
+        `;
 
-        totalElement.textContent = "0 HTG";
+    }else{
+
+        content.innerHTML = "";
+
+        cart.forEach((item,index)=>{
+
+            const itemTotal =
+            item.price * item.quantity;
+
+            total += itemTotal;
+
+            content.innerHTML += `
+
+            <div class="cart-line">
+
+                <div>
+
+                    <div class="cart-line-name">
+                        ${escapeHTML(item.name)}
+                    </div>
+
+                    <div class="cart-line-price">
+                        ${item.price.toLocaleString()} HTG
+                    </div>
+
+                </div>
+
+                <div class="cart-controls">
+
+                    <button
+                        onclick="changeQuantity(${index},-1)"
+                    >
+                        −
+                    </button>
+
+                    <span>
+                        ${item.quantity}
+                    </span>
+
+                    <button
+                        onclick="changeQuantity(${index},1)"
+                    >
+                        +
+                    </button>
+
+                    <button
+                        class="remove-item"
+                        onclick="removeItem(${index})"
+                    >
+                        ×
+                    </button>
+
+                </div>
+
+            </div>
+
+            `;
+
+        });
+
+    }
+
+
+    document.getElementById("cartTotal")
+    .textContent =
+    total.toLocaleString() + " HTG";
+
+
+    renderFormOrder();
+
+}
+
+
+/* =========================================================
+   FORM ORDER PREVIEW
+========================================================= */
+
+function renderFormOrder(){
+
+    const container =
+    document.getElementById("formProducts");
+
+    const totalElement =
+    document.getElementById("formTotal");
+
+    if(cart.length === 0){
+
+        container.innerHTML = `
+            <div class="empty-order">
+                Aucun produit dans votre commande.
+            </div>
+        `;
+
+        totalElement.textContent =
+        "0 HTG";
 
         return;
 
     }
 
+
     let total = 0;
 
-    summary.innerHTML = "";
+    container.innerHTML = "";
+
 
     cart.forEach(item=>{
 
-        const itemTotal =
-            item.price * item.quantity;
+        const subtotal =
+        item.price * item.quantity;
 
-        total += itemTotal;
+        total += subtotal;
 
-        summary.innerHTML += `
+        container.innerHTML += `
 
-        <div class="summary-item">
+            <div class="form-product-row">
 
-            <span>
-                ${item.name} × ${item.quantity}
-            </span>
+                <span>
+                    ${escapeHTML(item.name)}
+                    × ${item.quantity}
+                </span>
 
-            <strong>
-                ${itemTotal.toLocaleString()} HTG
-            </strong>
+                <strong>
+                    ${subtotal.toLocaleString()} HTG
+                </strong>
 
-        </div>
+            </div>
 
         `;
 
     });
 
+
     totalElement.textContent =
-        total.toLocaleString() + " HTG";
+    total.toLocaleString() + " HTG";
 
 }
 
 
-/* =========================
-   CART MODAL
-========================= */
+/* =========================================================
+   CART DRAWER
+========================================================= */
 
 function openCart(){
 
     document
-        .getElementById("cartModal")
-        .classList.add("active");
+    .getElementById("cartDrawer")
+    .classList.add("active");
+
+    document
+    .getElementById("overlay")
+    .classList.add("active");
 
 }
+
 
 function closeCart(){
 
     document
-        .getElementById("cartModal")
-        .classList.remove("active");
+    .getElementById("cartDrawer")
+    .classList.remove("active");
+
+    document
+    .getElementById("overlay")
+    .classList.remove("active");
 
 }
 
 
-/* =========================
+/* =========================================================
    GO TO ORDER
-========================= */
+========================================================= */
 
 function goToOrder(){
 
     closeCart();
 
     document
-        .getElementById("commande")
-        .scrollIntoView({
-            behavior:"smooth"
-        });
+    .getElementById("commande")
+    .scrollIntoView({
+        behavior:"smooth"
+    });
 
 }
 
 
-/* =========================
+/* =========================================================
    MOBILE MENU
-========================= */
+========================================================= */
 
-function toggleMenu(){
+function toggleMobileMenu(){
 
-    document
-        .getElementById("nav")
-        .classList.toggle("open");
+    const nav =
+    document.querySelector(".nav");
+
+    if(nav.style.display === "flex"){
+
+        nav.style.display = "";
+
+    }else{
+
+        nav.style.display = "flex";
+
+        nav.style.position = "absolute";
+        nav.style.top = "75px";
+        nav.style.left = "16px";
+        nav.style.right = "16px";
+        nav.style.background = "#f8f5ef";
+        nav.style.padding = "20px";
+        nav.style.flexDirection = "column";
+        nav.style.alignItems = "flex-start";
+        nav.style.gap = "20px";
+        nav.style.boxShadow =
+            "0 10px 30px rgba(0,0,0,.1)";
+
+    }
 
 }
 
 
-/* =========================
-   FORM SUBMIT
-========================= */
+/* =========================================================
+   FORM SUBMISSION
+========================================================= */
 
 document
 .getElementById("schoolForm")
-.addEventListener("submit",function(e){
+.addEventListener("submit",function(event){
 
-    e.preventDefault();
+    event.preventDefault();
+
 
     if(cart.length === 0){
 
-        alert(
-            "Veuillez d'abord ajouter au moins un produit au panier."
+        showToast(
+            "Ajoutez au moins un produit au panier."
         );
 
         return;
 
     }
 
+
     const order = {
 
+        reference:
+        "DADA-" +
+        Date.now()
+        .toString()
+        .slice(-8),
+
         customerName:
-            document.getElementById("name").value,
+        document.getElementById("customerName").value,
 
         phone:
-            document.getElementById("phone").value,
+        document.getElementById("phone").value,
 
         school:
-            document.getElementById("school").value,
+        document.getElementById("schoolName").value,
 
         date:
-            document.getElementById("date").value,
+        document.getElementById("orderDate").value,
 
         time:
-            document.getElementById("time").value,
+        document.getElementById("orderTime").value,
 
         className:
-            document.getElementById("class").value,
+        document.getElementById("className").value,
 
-        location:
-            document.getElementById("location").value,
+        deliveryPlace:
+        document.getElementById("deliveryPlace").value,
 
-        note:
-            document.getElementById("note").value,
+        message:
+        document.getElementById("message").value,
 
-        products: cart,
+        products:
+        cart.map(item=>({...item})),
 
-        total: cart.reduce(
+        total:
+        cart.reduce(
             (sum,item)=>
-                sum + item.price * item.quantity,
+            sum + item.price * item.quantity,
             0
-        )
+        ),
+
+        status:
+        "Nouvelle",
+
+        createdAt:
+        new Date().toISOString()
 
     };
 
 
-    /*
-       VERSION TEST
+    const orders =
+    JSON.parse(
+        localStorage.getItem("dadaOrders")
+        || "[]"
+    );
 
-       Pour l'instant la commande est
-       enregistrée dans le navigateur.
 
-       Dans la prochaine version,
-       on l'enverra au serveur Node.js
-       et à la base de données.
-    */
+    orders.push(order);
 
-    const existingOrders =
-        JSON.parse(
-            localStorage.getItem("dadaOrders") || "[]"
-        );
-
-    order.id =
-        "DADA-" +
-        Date.now();
-
-    order.status =
-        "Nouvelle";
-
-    order.createdAt =
-        new Date().toISOString();
-
-    existingOrders.push(order);
 
     localStorage.setItem(
         "dadaOrders",
-        JSON.stringify(existingOrders)
+        JSON.stringify(orders)
     );
+
+
+    document.getElementById(
+        "orderReference"
+    ).textContent =
+    order.reference;
 
 
     document
-        .getElementById("successMessage")
-        .classList.add("show");
-
-
-    alert(
-        "Commande " +
-        order.id +
-        " enregistrée avec succès !"
-    );
+    .getElementById("successMessage")
+    .classList.add("show");
 
 
     this.reset();
@@ -1651,40 +2337,59 @@ document
     updateCart();
 
 
+    showToast(
+        "Commande enregistrée."
+    );
+
+});
+
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+let toastTimer;
+
+function showToast(message){
+
+    const toast =
+    document.getElementById("toast");
+
+    toast.textContent = message;
+
+    toast.classList.add("show");
+
+    clearTimeout(toastTimer);
+
+    toastTimer =
     setTimeout(()=>{
 
-        document
-            .getElementById("successMessage")
-            .scrollIntoView({
-                behavior:"smooth",
-                block:"center"
-            });
+        toast.classList.remove("show");
 
-    },100);
+    },2500);
 
-});
+}
 
 
-/* =========================
-   CLOSE MODAL OUTSIDE
-========================= */
+/* =========================================================
+   SECURITY HELPER
+========================================================= */
 
-document
-.getElementById("cartModal")
-.addEventListener("click",function(e){
+function escapeHTML(value){
 
-    if(e.target === this){
+    return String(value)
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
 
-        closeCart();
-
-    }
-
-});
+}
 
 
-/* =========================
+/* =========================================================
    INITIALIZATION
-========================= */
+========================================================= */
 
 updateCart();
 
