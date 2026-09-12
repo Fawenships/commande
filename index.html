@@ -17,10 +17,6 @@ content="DADA — Pâtisserie artisanale et service de commande pour particulier
 
 <style>
 
-/* =========================================================
-   RESET
-========================================================= */
-
 *{
     margin:0;
     padding:0;
@@ -54,41 +50,22 @@ a{
     text-decoration:none;
 }
 
-
-/* =========================================================
-   VARIABLES
-========================================================= */
-
 :root{
-
     --black:#181716;
     --black-soft:#242220;
-
     --cream:#f8f5ef;
     --cream-dark:#eee9df;
-
     --white:#ffffff;
-
     --brown:#70513f;
     --brown-dark:#52392c;
-
     --gold:#ae8a54;
-
     --gray:#77716b;
-
     --border:#ded8cf;
-
     --max:1240px;
-
 }
 
-
-/* =========================================================
-   GLOBAL
-========================================================= */
-
 .container{
-    width:min(var(--max), calc(100% - 50px));
+    width:min(var(--max),calc(100% - 50px));
     margin:auto;
 }
 
@@ -124,9 +101,7 @@ a{
 }
 
 
-/* =========================================================
-   HEADER
-========================================================= */
+/* HEADER */
 
 .header{
     position:fixed;
@@ -144,11 +119,9 @@ a{
 }
 
 .navbar{
-    width:min(var(--max), calc(100% - 50px));
+    width:min(var(--max),calc(100% - 50px));
     margin:auto;
-
     height:88px;
-
     display:flex;
     align-items:center;
     justify-content:space-between;
@@ -207,17 +180,13 @@ a{
     border:1px solid var(--black);
     background:var(--black);
     color:white;
-
     height:44px;
     padding:0 19px;
-
     display:flex;
     align-items:center;
     gap:9px;
-
     font-size:13px;
     font-weight:700;
-
     transition:.25s;
 }
 
@@ -246,17 +215,13 @@ a{
 }
 
 
-/* =========================================================
-   HERO
-========================================================= */
+/* HERO */
 
 .hero{
     min-height:100vh;
     position:relative;
-
     display:flex;
     align-items:center;
-
     background:
         linear-gradient(
             90deg,
@@ -266,12 +231,11 @@ a{
         ),
         url("https://images.unsplash.com/photo-1601050690117-94f5f6fa8bd7?auto=format&fit=crop&w=2000&q=90")
         center/cover no-repeat;
-
     color:white;
 }
 
 .hero-content{
-    width:min(var(--max), calc(100% - 50px));
+    width:min(var(--max),calc(100% - 50px));
     margin:auto;
     padding-top:80px;
 }
@@ -310,17 +274,13 @@ a{
 .btn{
     min-height:52px;
     padding:0 25px;
-
     display:inline-flex;
     align-items:center;
     justify-content:center;
-
     border:1px solid transparent;
-
     font-size:13px;
     font-weight:700;
     letter-spacing:.3px;
-
     transition:.3s;
 }
 
@@ -345,9 +305,7 @@ a{
 }
 
 
-/* =========================================================
-   INTRO
-========================================================= */
+/* INTRO */
 
 .intro{
     background:var(--cream);
@@ -362,7 +320,6 @@ a{
 
 .intro-image{
     min-height:600px;
-
     background:
         url("https://images.unsplash.com/photo-1614707267537-2b1a6a5b5c8c?auto=format&fit=crop&w=1200&q=85")
         center/cover;
@@ -393,9 +350,7 @@ a{
 }
 
 
-/* =========================================================
-   PRODUCTS
-========================================================= */
+/* PRODUCTS */
 
 .products-section{
     background:white;
@@ -469,14 +424,11 @@ a{
 .product-add{
     width:100%;
     height:46px;
-
     border:1px solid var(--black);
     background:var(--black);
     color:white;
-
     font-size:13px;
     font-weight:700;
-
     transition:.25s;
 }
 
@@ -486,9 +438,7 @@ a{
 }
 
 
-/* =========================================================
-   SCHOOL ORDER
-========================================================= */
+/* SCHOOL */
 
 .school{
     background:var(--black);
@@ -658,14 +608,11 @@ a{
     width:100%;
     margin-top:22px;
     height:54px;
-
     border:1px solid var(--black);
     background:var(--black);
     color:white;
-
     font-weight:700;
     font-size:13px;
-
     transition:.25s;
 }
 
@@ -690,9 +637,7 @@ a{
 }
 
 
-/* =========================================================
-   PHILOSOPHY
-========================================================= */
+/* PHILOSOPHY */
 
 .philosophy{
     background:var(--cream-dark);
@@ -719,9 +664,7 @@ a{
 }
 
 
-/* =========================================================
-   FOOTER
-========================================================= */
+/* FOOTER */
 
 .footer{
     background:#11100f;
@@ -778,23 +721,19 @@ a{
     padding-top:22px;
     color:#6d6964;
     font-size:12px;
-
     display:flex;
     justify-content:space-between;
     gap:20px;
 }
 
 
-/* =========================================================
-   CART DRAWER
-========================================================= */
+/* CART */
 
 .overlay{
     position:fixed;
     inset:0;
     background:rgba(0,0,0,.5);
     z-index:2000;
-
     opacity:0;
     visibility:hidden;
     transition:.3s;
@@ -813,10 +752,8 @@ a{
     width:min(480px,100%);
     background:white;
     z-index:2100;
-
     transform:translateX(100%);
     transition:.35s;
-
     display:flex;
     flex-direction:column;
 }
@@ -828,9 +765,7 @@ a{
 .cart-header{
     height:85px;
     padding:0 27px;
-
     border-bottom:1px solid var(--border);
-
     display:flex;
     align-items:center;
     justify-content:space-between;
@@ -857,7 +792,6 @@ a{
     display:grid;
     grid-template-columns:1fr auto;
     gap:15px;
-
     padding:18px 0;
     border-bottom:1px solid #eeeae4;
 }
@@ -922,24 +856,18 @@ a{
 }
 
 
-/* =========================================================
-   TOAST
-========================================================= */
+/* TOAST */
 
 .toast{
     position:fixed;
     bottom:25px;
     left:50%;
     transform:translate(-50%,120px);
-
     background:var(--black);
     color:white;
-
     padding:14px 20px;
-
     font-size:13px;
     z-index:3000;
-
     opacity:0;
     transition:.3s;
 }
@@ -950,9 +878,7 @@ a{
 }
 
 
-/* =========================================================
-   RESPONSIVE
-========================================================= */
+/* RESPONSIVE */
 
 @media(max-width:1000px){
 
@@ -985,7 +911,6 @@ a{
     .footer-grid{
         grid-template-columns:1fr 1fr;
     }
-
 }
 
 @media(max-width:650px){
@@ -1058,17 +983,13 @@ a{
     .footer-bottom{
         flex-direction:column;
     }
-
 }
+
 </style>
 </head>
 
 <body>
 
-
-<!-- =======================================================
-     HEADER
-======================================================= -->
 
 <header class="header" id="header">
 
@@ -1106,11 +1027,8 @@ Panier
 </header>
 
 
-<!-- =======================================================
-     HERO
-======================================================= -->
-
 <main>
+
 
 <section class="hero" id="accueil">
 
@@ -1150,10 +1068,6 @@ Commander pour une école
 
 </section>
 
-
-<!-- =======================================================
-     ABOUT
-======================================================= -->
 
 <section class="section intro" id="maison">
 
@@ -1197,10 +1111,6 @@ DADA
 </section>
 
 
-<!-- =======================================================
-     PRODUCTS
-======================================================= -->
-
 <section class="section products-section" id="carte">
 
 <div class="container">
@@ -1229,8 +1139,6 @@ les pauses scolaires et les moments à partager.
 
 <div class="products-grid">
 
-
-<!-- PRODUCT 1 -->
 
 <article class="product">
 
@@ -1272,8 +1180,6 @@ Ajouter au panier
 </article>
 
 
-<!-- PRODUCT 2 -->
-
 <article class="product">
 
 <div
@@ -1313,8 +1219,6 @@ Ajouter au panier
 
 </article>
 
-
-<!-- PRODUCT 3 -->
 
 <article class="product">
 
@@ -1362,10 +1266,6 @@ Ajouter au panier
 
 </section>
 
-
-<!-- =======================================================
-     SCHOOL ORDER
-======================================================= -->
 
 <section class="section school" id="commande">
 
@@ -1468,8 +1368,6 @@ plus simples et plus efficaces.
 
 </div>
 
-
-<!-- ORDER FORM -->
 
 <div class="order-card">
 
@@ -1681,7 +1579,7 @@ Total
 type="submit"
 class="submit"
 >
-Confirmer la commande
+Confirmer la commande sur WhatsApp
 </button>
 
 
@@ -1689,8 +1587,10 @@ Confirmer la commande
 class="success-message"
 id="successMessage"
 >
-<strong>Votre commande a été enregistrée.</strong><br>
-Référence : <span id="orderReference"></span>
+<strong>Votre commande est prête.</strong><br>
+Référence : <span id="orderReference"></span><br><br>
+WhatsApp va s'ouvrir avec votre commande préremplie.
+Vous devrez appuyer sur « Envoyer » pour transmettre la commande à DADA.
 </div>
 
 
@@ -1704,10 +1604,6 @@ Référence : <span id="orderReference"></span>
 
 </section>
 
-
-<!-- =======================================================
-     PHILOSOPHY
-======================================================= -->
 
 <section class="section philosophy">
 
@@ -1738,10 +1634,6 @@ DADA met l'accent sur la qualité, la simplicité et le service.
 
 </main>
 
-
-<!-- =======================================================
-     FOOTER
-======================================================= -->
 
 <footer class="footer">
 
@@ -1817,20 +1709,12 @@ Pâtisserie & Service
 </footer>
 
 
-<!-- =======================================================
-     OVERLAY
-======================================================= -->
-
 <div
 class="overlay"
 id="overlay"
 onclick="closeCart()"
 ></div>
 
-
-<!-- =======================================================
-     CART
-======================================================= -->
 
 <aside
 class="cart-drawer"
@@ -1886,10 +1770,6 @@ Continuer la commande
 </aside>
 
 
-<!-- =======================================================
-     TOAST
-======================================================= -->
-
 <div
 class="toast"
 id="toast"
@@ -1899,6 +1779,27 @@ Produit ajouté au panier.
 
 
 <script>
+
+/* =========================================================
+   CONFIGURATION WHATSAPP
+========================================================= */
+
+/*
+   IMPORTANT :
+
+   Remplace 509XXXXXXXX par le numéro WhatsApp de DADA.
+
+   Exemple :
+   50937000000
+
+   Ne mets PAS :
+   +509
+   espaces
+   tirets
+*/
+
+const WHATSAPP_NUMBER = "509XXXXXXXX";
+
 
 /* =========================================================
    DATA
@@ -1930,7 +1831,7 @@ window.addEventListener("scroll",()=>{
 
 
 /* =========================================================
-   CART
+   PANIER
 ========================================================= */
 
 function addToCart(name,price){
@@ -1945,8 +1846,8 @@ function addToCart(name,price){
     }else{
 
         cart.push({
-            name,
-            price,
+            name:name,
+            price:price,
             quantity:1
         });
 
@@ -1978,6 +1879,8 @@ function changeQuantity(index,value){
 
 function removeItem(index){
 
+    if(!cart[index]) return;
+
     cart.splice(index,1);
 
     updateCart();
@@ -2001,6 +1904,7 @@ function updateCart(){
 
     const content =
     document.getElementById("cartContent");
+
 
     if(cart.length === 0){
 
@@ -2040,6 +1944,7 @@ function updateCart(){
                 <div class="cart-controls">
 
                     <button
+                        type="button"
                         onclick="changeQuantity(${index},-1)"
                     >
                         −
@@ -2050,12 +1955,14 @@ function updateCart(){
                     </span>
 
                     <button
+                        type="button"
                         onclick="changeQuantity(${index},1)"
                     >
                         +
                     </button>
 
                     <button
+                        type="button"
                         class="remove-item"
                         onclick="removeItem(${index})"
                     >
@@ -2084,7 +1991,7 @@ function updateCart(){
 
 
 /* =========================================================
-   FORM ORDER PREVIEW
+   APERÇU COMMANDE
 ========================================================= */
 
 function renderFormOrder(){
@@ -2094,6 +2001,7 @@ function renderFormOrder(){
 
     const totalElement =
     document.getElementById("formTotal");
+
 
     if(cart.length === 0){
 
@@ -2150,7 +2058,7 @@ function renderFormOrder(){
 
 
 /* =========================================================
-   CART DRAWER
+   PANIER DRAWER
 ========================================================= */
 
 function openCart(){
@@ -2180,7 +2088,7 @@ function closeCart(){
 
 
 /* =========================================================
-   GO TO ORDER
+   CONTINUER LA COMMANDE
 ========================================================= */
 
 function goToOrder(){
@@ -2197,13 +2105,14 @@ function goToOrder(){
 
 
 /* =========================================================
-   MOBILE MENU
+   MENU MOBILE
 ========================================================= */
 
 function toggleMobileMenu(){
 
     const nav =
     document.querySelector(".nav");
+
 
     if(nav.style.display === "flex"){
 
@@ -2222,6 +2131,7 @@ function toggleMobileMenu(){
         nav.style.flexDirection = "column";
         nav.style.alignItems = "flex-start";
         nav.style.gap = "20px";
+
         nav.style.boxShadow =
             "0 10px 30px rgba(0,0,0,.1)";
 
@@ -2231,7 +2141,7 @@ function toggleMobileMenu(){
 
 
 /* =========================================================
-   FORM SUBMISSION
+   COMMANDE WHATSAPP
 ========================================================= */
 
 document
@@ -2241,10 +2151,17 @@ document
     event.preventDefault();
 
 
-    if(cart.length === 0){
+    /*
+       Vérification du numéro WhatsApp
+    */
 
-        showToast(
-            "Ajoutez au moins un produit au panier."
+    if(
+        WHATSAPP_NUMBER === "509XXXXXXXX" ||
+        WHATSAPP_NUMBER.trim() === ""
+    ){
+
+        alert(
+            "Veuillez configurer le numéro WhatsApp de DADA dans le code."
         );
 
         return;
@@ -2252,83 +2169,224 @@ document
     }
 
 
-    const order = {
+    /*
+       Vérification du panier
+    */
 
-        reference:
+    if(cart.length === 0){
+
+        showToast(
+            "Ajoutez au moins un produit au panier."
+        );
+
+        document
+        .getElementById("carte")
+        .scrollIntoView({
+            behavior:"smooth"
+        });
+
+        return;
+
+    }
+
+
+    /*
+       RÉCUPÉRATION DES INFORMATIONS
+    */
+
+    const customerName =
+    document
+    .getElementById("customerName")
+    .value
+    .trim();
+
+
+    const phone =
+    document
+    .getElementById("phone")
+    .value
+    .trim();
+
+
+    const school =
+    document
+    .getElementById("schoolName")
+    .value
+    .trim();
+
+
+    const date =
+    document
+    .getElementById("orderDate")
+    .value;
+
+
+    const time =
+    document
+    .getElementById("orderTime")
+    .value;
+
+
+    const className =
+    document
+    .getElementById("className")
+    .value
+    .trim();
+
+
+    const deliveryPlace =
+    document
+    .getElementById("deliveryPlace")
+    .value;
+
+
+    const message =
+    document
+    .getElementById("message")
+    .value
+    .trim();
+
+
+    /*
+       RÉFÉRENCE
+    */
+
+    const reference =
         "DADA-" +
         Date.now()
         .toString()
-        .slice(-8),
-
-        customerName:
-        document.getElementById("customerName").value,
-
-        phone:
-        document.getElementById("phone").value,
-
-        school:
-        document.getElementById("schoolName").value,
-
-        date:
-        document.getElementById("orderDate").value,
-
-        time:
-        document.getElementById("orderTime").value,
-
-        className:
-        document.getElementById("className").value,
-
-        deliveryPlace:
-        document.getElementById("deliveryPlace").value,
-
-        message:
-        document.getElementById("message").value,
-
-        products:
-        cart.map(item=>({...item})),
-
-        total:
-        cart.reduce(
-            (sum,item)=>
-            sum + item.price * item.quantity,
-            0
-        ),
-
-        status:
-        "Nouvelle",
-
-        createdAt:
-        new Date().toISOString()
-
-    };
+        .slice(-8);
 
 
-    const orders =
-    JSON.parse(
-        localStorage.getItem("dadaOrders")
-        || "[]"
-    );
+    /*
+       PRODUITS
+    */
+
+    let total = 0;
+
+    let productsText = "";
 
 
-    orders.push(order);
+    cart.forEach(item=>{
+
+        const subtotal =
+        item.price * item.quantity;
+
+        total += subtotal;
 
 
-    localStorage.setItem(
-        "dadaOrders",
-        JSON.stringify(orders)
-    );
+        productsText +=
+        "• " +
+        item.name +
+        " × " +
+        item.quantity +
+        " = " +
+        subtotal.toLocaleString() +
+        " HTG\n";
 
+    });
+
+
+    /*
+       MESSAGE WHATSAPP
+    */
+
+    const whatsappMessage =
+
+`Bonjour DADA,
+
+Je souhaite passer une commande.
+
+━━━━━━━━━━━━━━━━
+RÉFÉRENCE
+━━━━━━━━━━━━━━━━
+
+${reference}
+
+
+━━━━━━━━━━━━━━━━
+INFORMATIONS CLIENT
+━━━━━━━━━━━━━━━━
+
+Nom : ${customerName}
+Téléphone : ${phone}
+
+
+━━━━━━━━━━━━━━━━
+ÉTABLISSEMENT
+━━━━━━━━━━━━━━━━
+
+École : ${school}
+Classe / Niveau : ${className || "Non précisé"}
+
+
+━━━━━━━━━━━━━━━━
+LIVRAISON
+━━━━━━━━━━━━━━━━
+
+Date : ${date}
+Heure : ${time}
+Lieu : ${deliveryPlace || "Non précisé"}
+
+
+━━━━━━━━━━━━━━━━
+COMMANDE
+━━━━━━━━━━━━━━━━
+
+${productsText}
+
+TOTAL : ${total.toLocaleString()} HTG
+
+
+━━━━━━━━━━━━━━━━
+INFORMATIONS COMPLÉMENTAIRES
+━━━━━━━━━━━━━━━━
+
+${message || "Aucune"}
+
+
+Merci de confirmer ma commande.`;
+
+
+    /*
+       CRÉATION DU LIEN WHATSAPP
+    */
+
+    const whatsappURL =
+        "https://wa.me/" +
+        WHATSAPP_NUMBER +
+        "?text=" +
+        encodeURIComponent(whatsappMessage);
+
+
+    /*
+       AFFICHER LA RÉFÉRENCE
+    */
 
     document.getElementById(
         "orderReference"
     ).textContent =
-    order.reference;
+    reference;
 
 
     document
     .getElementById("successMessage")
     .classList.add("show");
 
+
+    /*
+       OUVERTURE WHATSAPP
+    */
+
+    window.open(
+        whatsappURL,
+        "_blank"
+    );
+
+
+    /*
+       NETTOYAGE
+    */
 
     this.reset();
 
@@ -2338,7 +2396,7 @@ document
 
 
     showToast(
-        "Commande enregistrée."
+        "Commande préparée pour WhatsApp."
     );
 
 });
@@ -2350,16 +2408,19 @@ document
 
 let toastTimer;
 
+
 function showToast(message){
 
     const toast =
     document.getElementById("toast");
 
-    toast.textContent = message;
+    toast.textContent =
+    message;
 
     toast.classList.add("show");
 
     clearTimeout(toastTimer);
+
 
     toastTimer =
     setTimeout(()=>{
@@ -2388,7 +2449,7 @@ function escapeHTML(value){
 
 
 /* =========================================================
-   INITIALIZATION
+   INITIALISATION
 ========================================================= */
 
 updateCart();
