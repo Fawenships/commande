@@ -295,31 +295,6 @@ nav a:hover{
     margin-bottom:30px;
 }
 
-.promo-badge{
-    display:inline-block;
-    background:#fff4ec;
-    color:var(--primary-dark);
-    border:1.5px dashed var(--primary);
-    padding:10px 16px;
-    border-radius:10px;
-    font-size:13px;
-    font-weight:800;
-    margin-bottom:12px;
-}
-
-.availability-badge{
-    display:inline-block;
-    background:#eef7ff;
-    color:#0a5ab0;
-    border:1.5px solid #cfe6fb;
-    padding:10px 16px;
-    border-radius:10px;
-    font-size:13px;
-    font-weight:800;
-    margin-bottom:22px;
-    margin-left:8px;
-}
-
 .price-title{
     font-size:14px;
     font-weight:800;
@@ -876,10 +851,6 @@ footer{
             PÂTÉ KREYÒL HAÏTIEN
         </span>
 
-        <span class="hero-badge" style="background:rgba(232,93,4,.95);color:white;margin-left:8px;">
-            🎁 10 ACHETÉS = 1 GRATUIT
-        </span>
-
         <h1>
             Le goût authentique du
             <span>Pâté Kreyòl.</span>
@@ -945,14 +916,6 @@ footer{
                 à votre commande. Les trois options concernent le même
                 Pâté Kreyòl.
             </p>
-
-            <div class="promo-badge" id="promoBadge">
-                🎁 Achetez 10 Pâté Kreyòl, le 11ᵉ est GRATUIT !
-            </div>
-
-            <div class="availability-badge">
-                🕗 Bonus actif de 7h00 à 7h59 AM
-            </div>
 
             <div class="price-title">
                 Choisissez votre option
@@ -1536,37 +1499,6 @@ function addSelectedProduct(){
    PANIER
 ========================= */
 
-/* =========================
-   PROMOTION : 10 ACHETÉS = 1 GRATUIT
-   (le client paie la quantité choisie et
-   reçoit 1 pâté gratuit en plus par tranche de 10)
-========================= */
-
-function getFreeQuantity(quantity){
-
-    if(!isBonusActive()){
-
-        return 0;
-
-    }
-
-    return Math.floor(quantity / 10);
-
-}
-
-function getReceivedQuantity(quantity){
-
-    return quantity + getFreeQuantity(quantity);
-
-}
-
-function getLineTotal(item){
-
-    return item.quantity * item.price;
-
-}
-
-
 function updateCart(){
 
     const cartCount =
@@ -1582,16 +1514,12 @@ function updateCart(){
 
     let total = 0;
 
-    let totalFree = 0;
-
 
     cart.forEach(function(item){
 
-        totalQuantity += getReceivedQuantity(item.quantity);
+        totalQuantity += item.quantity;
 
-        total += getLineTotal(item);
-
-        totalFree += getFreeQuantity(item.quantity);
+        total += item.price * item.quantity;
 
     });
 
@@ -1617,14 +1545,6 @@ function updateCart(){
 
         cartItems.innerHTML = cart.map(function(item,index){
 
-            const free = getFreeQuantity(item.quantity);
-
-            const received = getReceivedQuantity(item.quantity);
-
-            const freeText = free > 0
-                ? ` <span style="color:var(--success);font-weight:800;">(+${free} gratuit${free > 1 ? "s" : ""} 🎁 = ${received} reçus)</span>`
-                : "";
-
             return `
 
                 <div class="cart-item">
@@ -1636,7 +1556,7 @@ function updateCart(){
                         </strong>
 
                         <span>
-                            ${item.price} HTG × ${item.quantity} achetés${freeText}
+                            ${item.price} HTG × ${item.quantity}
                         </span>
 
                     </div>
@@ -1694,14 +1614,6 @@ function updateCart(){
 
         summaryItems.innerHTML = cart.map(function(item){
 
-            const free = getFreeQuantity(item.quantity);
-
-            const received = getReceivedQuantity(item.quantity);
-
-            const freeText = free > 0
-                ? ` <span style="color:var(--success);font-weight:800;">(+${free} gratuit${free > 1 ? "s" : ""} 🎁 = ${received} reçus)</span>`
-                : "";
-
             return `
 
                 <div class="summary-item">
@@ -1709,13 +1621,13 @@ function updateCart(){
                     <span>
 
                         ${item.name}
-                        × ${item.quantity} achetés${freeText}
+                        × ${item.quantity}
 
                     </span>
 
                     <strong>
 
-                        ${getLineTotal(item)} HTG
+                        ${item.price * item.quantity} HTG
 
                     </strong>
 
@@ -1724,30 +1636,6 @@ function updateCart(){
             `;
 
         }).join("");
-
-        if(totalFree > 0){
-
-            summaryItems.innerHTML += `
-
-                <div class="summary-item">
-
-                    <span style="color:var(--success);font-weight:800;">
-
-                        🎁 Promotion (10 achetés = 1 gratuit)
-
-                    </span>
-
-                    <strong style="color:var(--success);">
-
-                        +${totalFree} pâté${totalFree > 1 ? "s" : ""} offert${totalFree > 1 ? "s" : ""}
-
-                    </strong>
-
-                </div>
-
-            `;
-
-        }
 
     }
 
@@ -1923,30 +1811,21 @@ document
 
         let total = 0;
 
-        let totalFree = 0;
-
         let productsMessage = "";
 
 
         cart.forEach(function(item){
 
-            const free = getFreeQuantity(item.quantity);
-
-            const received = getReceivedQuantity(item.quantity);
-
-            const subtotal = getLineTotal(item);
+            const subtotal =
+                item.price * item.quantity;
 
             total += subtotal;
-
-            totalFree += free;
 
             productsMessage +=
                 "• " +
                 item.name +
                 " × " +
                 item.quantity +
-                " achetés" +
-                (free > 0 ? " + " + free + " gratuit" + (free > 1 ? "s" : "") + " 🎁 (= " + received + " reçus)" : "") +
                 " = " +
                 subtotal +
                 " HTG\n";
@@ -1983,7 +1862,7 @@ Heure : ${time}
 
 COMMANDE
 
-${productsMessage}${totalFree > 0 ? "\n🎁 Promotion appliquée : " + totalFree + " pâté" + (totalFree > 1 ? "s" : "") + " offert" + (totalFree > 1 ? "s" : "") + " (10 achetés = 1 gratuit)\n" : ""}
+${productsMessage}
 TOTAL : ${total} HTG
 
 NOTE
@@ -2022,65 +1901,10 @@ Merci.`;
 
 
 /* =========================
-   BONUS ACTIF ENTRE 7h00 ET 8h00
-========================= */
-
-function isBonusActive(){
-
-    const now = new Date();
-
-    const currentMinutes =
-        now.getHours() * 60 + now.getMinutes();
-
-    const startMinutes = 7 * 60;
-
-    const endMinutes = 7 * 60 + 59;
-
-    return currentMinutes >= startMinutes && currentMinutes <= endMinutes;
-
-}
-
-function updatePromoBadge(){
-
-    const badge =
-        document.getElementById("promoBadge");
-
-    if(!badge){
-
-        return;
-
-    }
-
-    if(isBonusActive()){
-
-        badge.textContent =
-            "🎁 Bonus actif maintenant : achetez 10 Pâté Kreyòl, le 11ᵉ est GRATUIT !";
-
-        badge.style.opacity = "1";
-
-    }else{
-
-        badge.textContent =
-            "🎁 Achetez 10, le 11ᵉ est gratuit — bonus valable de 7h00 à 7h59 AM";
-
-        badge.style.opacity = ".65";
-
-    }
-
-    updateCart();
-
-}
-
-
-/* =========================
    INITIALISATION
 ========================= */
 
 updateCart();
-
-updatePromoBadge();
-
-setInterval(updatePromoBadge, 30000);
 
 </script>
 
